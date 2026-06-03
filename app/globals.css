@@ -229,6 +229,37 @@ body {
   }
 }
 
+html {
+  font-size: clamp(15px, 1.05vw, 18px);
+}
+
+body {
+  font-size: 0.95rem;
+  min-width: 0;
+}
+
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 1024px) {
+  main {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    padding-top: 3.5rem !important;
+    padding-bottom: 2.5rem !important;
+  }
+}
+
 /* ============================================================================
    THEME-SPECIFIC OVERRIDES
    ============================================================================ */

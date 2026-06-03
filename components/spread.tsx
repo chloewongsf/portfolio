@@ -206,16 +206,16 @@ export function Spread({ left, right, className, size = "dominant", backgroundIm
           {/* Image drop stack - top right corner, behind boxes, hanging off edge - only for dominant */}
           {size === "dominant" && (
             <div 
-            className="absolute z-[5]"
-            style={{
-              top: "8%",
-              right: "-2%",
-              width: "30%",
-              height: "35%",
-            }}
-          >
-            <ImageDropStack />
-          </div>
+              className="hidden md:block absolute z-[5]"
+              style={{
+                top: "8%",
+                right: "-2%",
+                width: "30%",
+                height: "35%",
+              }}
+            >
+              <ImageDropStack />
+            </div>
           )}
         </div>
       )}

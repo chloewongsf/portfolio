@@ -8,6 +8,7 @@ const GENOA = "#3a7878";
 export function PageNav() {
   return (
     <nav
+      className="page-nav"
       style={{
         position: "fixed",
         top: 0,
@@ -15,9 +16,11 @@ export function PageNav() {
         right: 0,
         zIndex: 40,
         display: "flex",
+        flexWrap: "wrap",
         alignItems: "center",
         justifyContent: "space-between",
-        padding: "1.5rem 2.5rem",
+        gap: "1rem",
+        padding: "clamp(1rem, 2.5vw, 1.75rem)",
         backgroundColor: "#111111",
         borderBottom: BORDER,
       }}
@@ -35,7 +38,7 @@ export function PageNav() {
       >
         Chloe Wong
       </Link>
-      <div style={{ display: "flex", gap: "2rem" }}>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
         {[
           { href: "/work", label: "work" },
           { href: "/about", label: "about" },
