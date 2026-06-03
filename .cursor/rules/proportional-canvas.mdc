@@ -1,0 +1,109 @@
+---
+description: Proportional Canvas rule for Figma SVGs - ensures all map-based layouts use percentage positioning relative to 1440x1858 frame
+alwaysApply: true
+---
+
+# Proportional Canvas Rule for Figma SVGs
+
+When working with SVGs exported from Figma, **always** follow the "Proportional Canvas" pattern to ensure components stay pinned to background elements regardless of browser size.
+
+## The Source of Truth
+
+**Figma Frame Dimensions**: `1440 x 1858`
+
+This is the canonical frame size. All positioning calculations must be based on these dimensions.
+
+## Parent Container Pattern
+
+**Always** wrap the map background and all overlay components in a container with:
+
+```tsx
+<div className="relative w-full aspect-[1440/1858] overflow-hidden">
+  {/* Background map */}
+  {/* Overlay components */}
+</div>
+```
+
+The `aspect-[1440/1858]` class locks the container's aspect ratio, ensuring proportional scaling.
+
+## Positioning Formula
+
+**Never use pixels (px) for positioning.** Always calculate percentages:
+
+### Horizontal (left/width):
+```
+percentage = (Figma X Coordinate / 1440) * 100
+```
+
+### Vertical (top/height):
+```
+percentage = (Figma Y Coordinate / 1858) * 100
+```
+
+### Example:
+If an element is at `X: 140, Y: 81` in Figma:
+- `left: ${(140 / 1440) * 100}%` → `left: 9.72%`
+- `top: ${(81 / 1858) * 100}%` → `top: 4.36%`
+
+## Layout System: Absolute Positioning Only
+
+**Do NOT use Flexbox or Grid** for positioning items on the map. Use `position: absolute` for all overlay elements:
+
+```tsx
+// ✅ CORRECT
+<div 
+  className="absolute"
+  style={{ 
+    left: '9.72%', 
+    top: '4.36%', 
+    width: '30.1%' 
+  }}
+>
+  {/* Component */}
+</div>
+
+// ❌ WRONG - Don't use flex/grid
+<div className="flex items-center justify-center">
+  {/* This will cause drift */}
+</div>
+```
+
+## Background Map Setup
+
+The background SVG should fill the container:
+
+```tsx
+<div className="absolute inset-0 size-full">
+  <Image
+    src="/maps/home-map-og.svg"
+    fill
+    className="object-contain"
+    priority
+  />
+</div>
+```
+
+## Component Sizing
+
+For images inside positioned containers, use:
+- `className="w-full h-auto"` to preserve aspect ratios
+- Width should be percentage-based (calculated from Figma)
+- Height should be `auto` to maintain proportions
+
+## Why This Works
+
+By using percentages relative to the fixed aspect-ratio container:
+1. The container scales proportionally with the viewport
+2. All percentage-based positions scale at the same rate
+3. Components stay perfectly aligned with background elements
+4. Works like Figma's "Present" mode (Scale to Fit)
+
+## Checklist
+
+When implementing a new Figma SVG layout:
+- [ ] Parent container uses `aspect-[1440/1858]`
+- [ ] All positions use percentage values (no `px`)
+- [ ] Calculations based on 1440 (width) or 1858 (height)
+- [ ] All overlay elements use `position: absolute`
+- [ ] No flexbox or grid for positioning
+- [ ] Background map uses `absolute inset-0 size-full`
