@@ -37,8 +37,8 @@ export function Spread({ left, right, className, size = "dominant", backgroundIm
       : 0.95;
 
   const isSupporting = size === "supporting";
-  const maxWidth = isSupporting ? "max-w-5xl" : "max-w-7xl";
-  const minHeight = isSupporting ? "min-h-[60vh]" : "min-h-screen";
+  const maxWidth = isSupporting ? "max-w-full md:max-w-5xl" : "max-w-full md:max-w-7xl";
+  const minHeight = isSupporting ? "min-h-auto md:min-h-[60vh]" : "min-h-auto md:min-h-screen";
 
   return (
     <section
@@ -53,8 +53,8 @@ export function Spread({ left, right, className, size = "dominant", backgroundIm
       {/* Background Image - original form, offset left of center, smaller width */}
       {backgroundImage && (
         <div className={cn(
-          "relative w-auto h-auto z-0",
-          size === "dominant" ? "max-w-[60%] ml-[10%]" : "max-w-[75%] ml-[12%]"
+          "relative w-full h-auto z-0",
+          size === "dominant" ? "max-w-full md:max-w-[60%] md:ml-[10%]" : "max-w-full md:max-w-[75%] md:ml-[12%]"
         )}>
           <motion.img
             src={backgroundImage}
@@ -74,12 +74,12 @@ export function Spread({ left, right, className, size = "dominant", backgroundIm
           {/* Square overlay - grouped with image, proportional, hangs off left edge - only for dominant */}
           {size === "dominant" && (
             <div 
-              className="absolute bottom-[15%] -left-[8%] w-[45%] h-[48%] bg-[#ecede1] pointer-events-none flex items-center justify-center"
-            style={{
-              boxShadow: "0 1px 2px rgba(0, 0, 0, 0.12)",
-              border: "1px solid rgba(0, 0, 0, 0.1)",
-            }}
-          >
+              className="hidden md:flex absolute bottom-[15%] -left-[8%] w-[45%] h-[48%] bg-[#ecede1] pointer-events-none items-center justify-center"
+              style={{
+                boxShadow: "0 1px 2px rgba(0, 0, 0, 0.12)",
+                border: "1px solid rgba(0, 0, 0, 0.1)",
+              }}
+            >
             {/* Texture effect on edges */}
             <div 
               className="absolute inset-0 opacity-40"
@@ -109,8 +109,8 @@ export function Spread({ left, right, className, size = "dominant", backgroundIm
           {/* Second square - lighter, shorter, wider, above and to the right - only for dominant */}
           {size === "dominant" && (
             <div 
-            className="absolute bottom-[68%] left-[2%] w-[52%] h-[18%] pointer-events-none flex items-center justify-center"
-            style={{
+              className="hidden md:flex absolute bottom-[68%] left-[2%] w-[52%] h-[18%] pointer-events-none items-center justify-center"
+              style={{
               boxShadow: "0 1px 2px rgba(0, 0, 0, 0.12)",
               border: "1px solid rgba(0, 0, 0, 0.1)",
               backgroundColor: "#f4f2e8",
@@ -155,7 +155,7 @@ export function Spread({ left, right, className, size = "dominant", backgroundIm
           {/* Right box - wide, not too tall, ripped edges (straight left) - only for dominant */}
           {size === "dominant" && rightBoxContent && (
             <div 
-              className="absolute bottom-[12%] -right-[5%] w-[42%] h-[16%] pointer-events-none flex items-center justify-center z-10"
+              className="hidden md:flex absolute bottom-[12%] -right-[5%] w-[42%] h-[16%] pointer-events-none items-center justify-center z-10"
               style={{
                 boxShadow: "0 1px 2px rgba(0, 0, 0, 0.12)",
                 border: "1px solid rgba(0, 0, 0, 0.1)",
@@ -293,7 +293,7 @@ export function Spread({ left, right, className, size = "dominant", backgroundIm
 
       {/* Content overlay - positioned absolutely over the image */}
       {backgroundImage && (
-        <div className="absolute inset-0 z-10 pointer-events-none">
+        <div className="absolute inset-0 z-10 hidden md:block pointer-events-none">
           {/* Text content positioned to match squares */}
           <div className="absolute inset-0 pointer-events-auto">
             {left}
