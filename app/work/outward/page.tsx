@@ -150,6 +150,11 @@ export default function OutwardPage() {
 
   // Scroll lock
   useEffect(() => {
+    if (window.matchMedia("(max-width: 800px)").matches) {
+      document.body.style.overflow = "unset";
+      return;
+    }
+
     window.scrollTo(0, 0);
     document.body.style.overflow = "hidden";
     return () => {
@@ -213,6 +218,8 @@ export default function OutwardPage() {
 
   // Wheel handler
   useEffect(() => {
+    if (window.matchMedia("(max-width: 800px)").matches) return;
+
     const onWheel = (e: WheelEvent) => {
       if (beat < 2 && e.deltaY > 0 && Math.abs(e.deltaY) > 30) {
         e.preventDefault();
@@ -313,8 +320,14 @@ export default function OutwardPage() {
 
       <PageNav />
 
+      <p className="scrolly-mobile-note">
+        the interactive opening for this case study is available on desktop.
+        this mobile version stacks the case study and visuals for easier reading.
+      </p>
+
       {/* Skip link */}
       <a
+        className="scrolly-desktop-only"
         href="#case-study"
         onClick={(e) => {
           e.preventDefault();
@@ -339,6 +352,7 @@ export default function OutwardPage() {
 
       {/* ── INTRO SEQUENCE ── */}
       <div
+        className="scrolly-desktop-only"
         onClick={() => {
           if (beat < 2) advance();
         }}
@@ -736,6 +750,7 @@ export default function OutwardPage() {
         >
           {/* Hero */}
           <section
+            className="scrolly-case-hero"
             style={{
               minHeight: "100vh",
               display: "grid",
@@ -774,6 +789,7 @@ export default function OutwardPage() {
             </div>
 
             <div
+              className="scrolly-case-summary"
               style={{
                 borderLeft: "1px solid rgba(232,240,247,0.16)",
                 paddingLeft: "2rem",
@@ -808,6 +824,7 @@ export default function OutwardPage() {
               </a>
 
               <div
+                className="scrolly-case-meta"
                 style={{
                   display: "grid",
                   gridTemplateColumns: "repeat(2, 1fr)",
@@ -832,6 +849,7 @@ export default function OutwardPage() {
 
           {/* Scrollytelling */}
           <section
+            className="scrolly-desktop-only"
             style={{
               position: "relative",
               display: "grid",
@@ -948,6 +966,77 @@ export default function OutwardPage() {
               </div>
             </div>
           </section>
+
+          <section className="scrolly-mobile-stack">
+            {SCENES.map((scene, index) => (
+              <div key={scene.title} className="scrolly-mobile-section">
+                <div>
+                  <p
+                    style={{
+                      color: "#6ba3c4",
+                      fontSize: "0.65rem",
+                      letterSpacing: "0.2em",
+                      textTransform: "uppercase",
+                      margin: "0 0 0.8rem",
+                    }}
+                  >
+                    {scene.eyebrow}
+                  </p>
+
+                  <h2
+                    style={{
+                      fontFamily: "var(--font-serif)",
+                      fontSize: "clamp(2rem, 13vw, 3.15rem)",
+                      fontWeight: 300,
+                      lineHeight: 1.05,
+                      letterSpacing: "-0.025em",
+                      margin: "0 0 1rem",
+                    }}
+                  >
+                    {scene.title}
+                  </h2>
+
+                  {scene.cta ? (
+                    <a
+                      href="https://outwwward.vercel.app"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        border: "1px solid rgba(107,163,196,0.45)",
+                        color: "#e8f0f7",
+                        textDecoration: "none",
+                        padding: "0.72rem 1rem",
+                        borderRadius: "999px",
+                        fontSize: "0.72rem",
+                        letterSpacing: "0.08em",
+                        textTransform: "lowercase",
+                      }}
+                    >
+                      view live project ↗
+                    </a>
+                  ) : (
+                    <p
+                      style={{
+                        color: "#8fa8c0",
+                        lineHeight: 1.75,
+                        fontSize: "0.95rem",
+                        margin: 0,
+                      }}
+                    >
+                      {scene.body}
+                    </p>
+                  )}
+                </div>
+
+                <div className="scrolly-mobile-visual">
+                  <OutwardVisual activeScene={index} />
+                </div>
+              </div>
+            ))}
+          </section>
         </main>
       </div>
     </div>
@@ -984,6 +1073,7 @@ function OutwardResearchSection() {
       </p>
 
       <div
+        className="scrolly-research-grid"
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(2, 1fr)",

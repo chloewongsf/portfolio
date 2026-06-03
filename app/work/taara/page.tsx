@@ -27,6 +27,7 @@ function TaaraEditorialCaseStudy() {
   return (
     <main style={{ backgroundColor: "#111111", color: "#f2f2f2" }}>
       <section
+        className="scrolly-case-hero"
         style={{
           minHeight: "100vh",
           display: "grid",
@@ -65,6 +66,7 @@ function TaaraEditorialCaseStudy() {
         </div>
 
         <div
+          className="scrolly-case-summary"
           style={{
             borderLeft: "1px solid rgba(242,242,242,0.18)",
             paddingLeft: "2rem",
@@ -78,6 +80,7 @@ function TaaraEditorialCaseStudy() {
           </p>
 
           <div
+            className="scrolly-case-meta"
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(4, 1fr)",
@@ -193,7 +196,9 @@ function TaaraRitualScroll() {
   }, []);
 
   return (
+    <>
     <section
+      className="scrolly-desktop-only"
       style={{
         position: "relative",
         display: "grid",
@@ -271,6 +276,54 @@ function TaaraRitualScroll() {
         <TaaraStickyVisual activeStep={activeStep} />
       </div>
     </section>
+    <section className="scrolly-mobile-stack">
+      {steps.map((step, index) => (
+        <div key={step.title} className="scrolly-mobile-section">
+          <div>
+            <p
+              style={{
+                color: "#3a7878",
+                fontSize: "0.65rem",
+                letterSpacing: "0.2em",
+                textTransform: "uppercase",
+                margin: "0 0 0.8rem",
+              }}
+            >
+              {step.eyebrow}
+            </p>
+
+            <h2
+              style={{
+                fontFamily: "var(--font-serif)",
+                fontSize: "clamp(2rem, 13vw, 3.15rem)",
+                fontWeight: 300,
+                lineHeight: 1.05,
+                letterSpacing: "-0.025em",
+                margin: "0 0 1rem",
+              }}
+            >
+              {step.title}
+            </h2>
+
+            <p
+              style={{
+                color: "#b8b8b8",
+                lineHeight: 1.75,
+                fontSize: "0.95rem",
+                margin: 0,
+              }}
+            >
+              {step.body}
+            </p>
+          </div>
+
+          <div className="scrolly-mobile-visual">
+            <TaaraStickyVisual activeStep={index} />
+          </div>
+        </div>
+      ))}
+    </section>
+    </>
   );
 }
 
@@ -650,6 +703,11 @@ export default function TaaraPage() {
   const wheelHandlerRef = useRef<((e: WheelEvent) => void) | undefined>(undefined);
 
   useEffect(() => {
+    if (window.matchMedia("(max-width: 800px)").matches) {
+      document.body.style.overflow = "unset";
+      return;
+    }
+
     window.scrollTo(0, 0);
     document.body.style.overflow = "hidden";
     return () => {
@@ -681,6 +739,8 @@ export default function TaaraPage() {
   }, [beat, receiptCount, textVisible, reflectionVisible]);
 
   useEffect(() => {
+    if (window.matchMedia("(max-width: 800px)").matches) return;
+
     const onWheel = (e: WheelEvent) => {
       if (beat < 2 && e.deltaY > 0 && Math.abs(e.deltaY) > 30) {
         e.preventDefault();
@@ -803,7 +863,13 @@ export default function TaaraPage() {
 
       <PageNav />
 
+      <p className="scrolly-mobile-note">
+        the interactive opening for this case study is available on desktop.
+        this mobile version stacks the case study and visuals for easier reading.
+      </p>
+
       <a
+        className="scrolly-desktop-only"
         href="#case-study"
         onClick={(e) => {
           e.preventDefault();
@@ -826,6 +892,7 @@ export default function TaaraPage() {
       </a>
 
       <div
+        className="scrolly-desktop-only"
         onClick={() => {
           if (beat !== 2) advance();
         }}

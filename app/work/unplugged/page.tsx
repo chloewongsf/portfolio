@@ -89,7 +89,13 @@ export default function UnpluggedPage() {
     >
       <PageNav />
 
+      <p className="scrolly-mobile-note">
+        the interactive scrollytelling version of this case study is available
+        on desktop. this mobile version stacks each section with its visual.
+      </p>
+
       <section
+        className="scrolly-case-hero"
         style={{
           minHeight: "100vh",
           display: "grid",
@@ -128,6 +134,7 @@ export default function UnpluggedPage() {
         </div>
 
         <div
+          className="scrolly-case-summary"
           style={{
             borderLeft: "1px solid rgba(245,239,230,0.18)",
             paddingLeft: "2rem",
@@ -139,6 +146,7 @@ export default function UnpluggedPage() {
           </p>
 
           <div
+            className="scrolly-case-meta"
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(2, 1fr)",
@@ -157,6 +165,7 @@ export default function UnpluggedPage() {
       </section>
 
       <section
+        className="scrolly-desktop-only"
         style={{
           position: "relative",
           display: "grid",
@@ -234,6 +243,54 @@ export default function UnpluggedPage() {
         >
           <UnpluggedVisual activeScene={activeScene} />
         </div>
+      </section>
+
+      <section className="scrolly-mobile-stack">
+        {SCENES.map((scene, index) => (
+          <div key={scene.title} className="scrolly-mobile-section">
+            <div>
+              <p
+                style={{
+                  color: "#d16f4c",
+                  fontSize: "0.65rem",
+                  letterSpacing: "0.2em",
+                  textTransform: "uppercase",
+                  margin: "0 0 0.8rem",
+                }}
+              >
+                {scene.eyebrow}
+              </p>
+
+              <h2
+                style={{
+                  fontFamily: "var(--font-serif)",
+                  fontSize: "clamp(2rem, 13vw, 3.15rem)",
+                  fontWeight: 300,
+                  lineHeight: 1.05,
+                  letterSpacing: "-0.025em",
+                  margin: "0 0 1rem",
+                }}
+              >
+                {scene.title}
+              </h2>
+
+              <p
+                style={{
+                  color: "#c8b8a7",
+                  lineHeight: 1.75,
+                  fontSize: "0.95rem",
+                  margin: 0,
+                }}
+              >
+                {scene.body}
+              </p>
+            </div>
+
+            <div className="scrolly-mobile-visual">
+              <UnpluggedVisual activeScene={index} />
+            </div>
+          </div>
+        ))}
       </section>
     </main>
   );
