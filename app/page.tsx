@@ -723,6 +723,7 @@ function HomeContent() {
       <GrainOverlay />
 
       <nav
+        className="home-nav"
         style={{
           position: "fixed",
           top: 0,
@@ -751,7 +752,7 @@ function HomeContent() {
           Chloe Wong
         </span>
 
-        <div style={{ display: "flex", gap: "2rem" }}>
+        <div className="home-nav-links" style={{ display: "flex", gap: "2rem" }}>
           {[
             { href: "/work", label: "work" },
             { href: "/about", label: "about" },
@@ -782,9 +783,10 @@ function HomeContent() {
           fontFamily: "var(--font-sans)",
         }}
       >
-        <div style={{ position: "relative", height: "200vh" }}>
+        <div className="hero-wrapper" style={{ position: "relative", height: "200vh" }}>
           <section
             ref={heroSectionRef}
+            className="hero-section"
             style={{
               position: "sticky",
               top: 0,
@@ -799,6 +801,7 @@ function HomeContent() {
         </div>
 
         <section
+          className="home-section selected-projects-section"
           style={{
             position: "relative",
             height: "100vh",
@@ -843,6 +846,7 @@ function HomeContent() {
           </div>
 
           <div
+            className="selected-projects-grid"
             style={{
               position: "relative",
               zIndex: 20,
@@ -947,6 +951,7 @@ function HomeContent() {
         </section>
 
         <section
+          className="home-section explore-mode-section"
           style={{
             position: "relative",
             height: "100vh",
@@ -976,6 +981,7 @@ function HomeContent() {
           </div>
 
           <div
+            className="explore-mode-grid"
             style={{
               position: "relative",
               zIndex: 20,

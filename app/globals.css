@@ -276,6 +276,44 @@ svg {
     right: 0;
     padding: 1rem 1rem !important;
   }
+
+  .home-nav {
+    padding: 1rem 1rem !important;
+  }
+
+  .home-nav-links {
+    gap: 1rem !important;
+    flex-wrap: wrap !important;
+    justify-content: flex-end !important;
+  }
+
+  .hero-wrapper {
+    height: auto !important;
+  }
+
+  .hero-section {
+    position: relative !important;
+    height: auto !important;
+    border-bottom: none !important;
+  }
+
+  .home-section {
+    padding: 2.5rem 1rem 2rem !important;
+    min-height: auto !important;
+    height: auto !important;
+  }
+
+  .selected-projects-grid,
+  .explore-mode-grid {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: none !important;
+    height: auto !important;
+  }
+
+  .selected-projects-grid > a,
+  .explore-mode-grid > a {
+    min-height: auto !important;
+  }
 }
 
 /* ============================================================================
