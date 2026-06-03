@@ -320,11 +320,6 @@ export default function OutwardPage() {
 
       <PageNav />
 
-      <p className="scrolly-mobile-note">
-        the interactive opening for this case study is available on desktop.
-        this mobile version stacks the case study and visuals for easier reading.
-      </p>
-
       {/* Skip link */}
       <a
         className="scrolly-desktop-only"
@@ -748,6 +743,11 @@ export default function OutwardPage() {
             fontFamily: "var(--font-sans)",
           }}
         >
+          <p className="scrolly-mobile-note">
+            the interactive opening for this case study is available on desktop.
+            this mobile version stacks the case study and visuals for easier reading.
+          </p>
+
           {/* Hero */}
           <section
             className="scrolly-case-hero"

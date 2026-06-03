@@ -251,10 +251,10 @@ body {
   .scrolly-mobile-note {
     display: block;
     margin: 0;
-    padding: 6.25rem 1.25rem 1.25rem;
+    padding: 5.5rem 1.25rem 0.9rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     color: rgba(242, 242, 242, 0.68);
-    font-size: 0.72rem;
+    font-size: 0.64rem;
     line-height: 1.6;
     letter-spacing: 0.08em;
   }
@@ -290,12 +290,25 @@ body {
     grid-template-columns: 1fr !important;
     min-height: auto !important;
     gap: 2rem !important;
-    padding: 4rem 1.25rem 3rem !important;
+    padding: 3rem 1.25rem 3rem !important;
   }
 
   .scrolly-case-hero h1 {
-    font-size: clamp(2.7rem, 18vw, 4.4rem) !important;
+    font-size: clamp(2.4rem, 14vw, 3.75rem) !important;
     max-width: none !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .scrolly-mobile-section h2 {
+    font-size: clamp(1.55rem, 9vw, 2.35rem) !important;
+    max-width: 100% !important;
+    overflow-wrap: anywhere !important;
+    word-break: normal !important;
+    hyphens: auto !important;
+  }
+
+  .scrolly-mobile-section p {
+    max-width: 100% !important;
   }
 
   .scrolly-case-summary {

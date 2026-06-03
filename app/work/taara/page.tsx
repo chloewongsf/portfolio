@@ -863,11 +863,6 @@ export default function TaaraPage() {
 
       <PageNav />
 
-      <p className="scrolly-mobile-note">
-        the interactive opening for this case study is available on desktop.
-        this mobile version stacks the case study and visuals for easier reading.
-      </p>
-
       <a
         className="scrolly-desktop-only"
         href="#case-study"
@@ -1179,6 +1174,10 @@ export default function TaaraPage() {
       </div>
 
       <div ref={caseStudyRef} id="case-study">
+        <p className="scrolly-mobile-note">
+          the interactive opening for this case study is available on desktop.
+          this mobile version stacks the case study and visuals for easier reading.
+        </p>
         <TaaraEditorialCaseStudy />
       </div>
 
