@@ -326,6 +326,18 @@ body {
     grid-template-columns: 1fr !important;
     row-gap: 0 !important;
   }
+
+  .standard-case-section {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+    padding-top: 1.5rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  .standard-case-section > p:first-child {
+    margin: 0 !important;
+    font-size: 0.58rem !important;
+  }
 }
 
 img,

@@ -83,6 +83,103 @@ function PageConfetti() {
     const H = window.innerHeight;
     const isMobile = W <= 768;
 
+    if (isMobile) {
+      const mobileDots: Array<{
+        x: number;
+        y: number;
+        vx: number;
+        vy: number;
+        r: number;
+        wobble: number;
+      }> = [];
+      const mobileEls: HTMLDivElement[] = [];
+      const MOBILE_MAX = 28;
+
+      for (let i = 0; i < MOBILE_MAX; i++) {
+        const r = 7 + Math.random() * 14;
+        const dot = {
+          x: r + Math.random() * Math.max(1, W - r * 2),
+          y: r + Math.random() * Math.max(1, H - r * 2),
+          vx: (Math.random() < 0.5 ? -1 : 1) * (22 + Math.random() * 48),
+          vy: (Math.random() < 0.5 ? -1 : 1) * (18 + Math.random() * 42),
+          r,
+          wobble: Math.random() * 1000,
+        };
+
+        mobileDots.push(dot);
+
+        const el = document.createElement("div");
+        el.style.cssText = [
+          "position:absolute",
+          `width:${r * 2}px`,
+          `height:${r * 2}px`,
+          "border-radius:50%",
+          `background:${PALETTE[Math.floor(Math.random() * PALETTE.length)]}`,
+          `filter:blur(${(0.25 + Math.random() * 0.8).toFixed(1)}px)`,
+          `opacity:${(0.48 + Math.random() * 0.34).toFixed(2)}`,
+          "will-change:transform",
+          "transform:translate3d(-9999px,-9999px,0)",
+          "backface-visibility:hidden",
+          "contain:layout paint style",
+          "pointer-events:none",
+        ].join(";");
+
+        containerEl.appendChild(el);
+        mobileEls.push(el);
+      }
+
+      let lastTime = -1;
+      let rafId: number;
+
+      function loop(now: number) {
+        if (lastTime < 0) lastTime = now;
+        const dt = Math.min((now - lastTime) / 1000, 0.05);
+        lastTime = now;
+
+        for (let i = 0; i < mobileDots.length; i++) {
+          const dot = mobileDots[i];
+          const driftX = Math.sin(now * 0.0007 + dot.wobble) * 3;
+          const driftY = Math.cos(now * 0.0006 + dot.wobble) * 3;
+
+          dot.x += (dot.vx + driftX) * dt;
+          dot.y += (dot.vy + driftY) * dt;
+
+          if (dot.x - dot.r <= 0) {
+            dot.x = dot.r;
+            dot.vx = Math.abs(dot.vx);
+          }
+
+          if (dot.x + dot.r >= W) {
+            dot.x = W - dot.r;
+            dot.vx = -Math.abs(dot.vx);
+          }
+
+          if (dot.y - dot.r <= 0) {
+            dot.y = dot.r;
+            dot.vy = Math.abs(dot.vy);
+          }
+
+          if (dot.y + dot.r >= H) {
+            dot.y = H - dot.r;
+            dot.vy = -Math.abs(dot.vy);
+          }
+
+          mobileEls[i].style.transform = `translate3d(${(dot.x - dot.r).toFixed(1)}px, ${(
+            dot.y - dot.r
+          ).toFixed(1)}px, 0)`;
+        }
+
+        rafId = requestAnimationFrame(loop);
+      }
+
+      rafId = requestAnimationFrame(loop);
+
+      return () => {
+        cancelAnimationFrame(rafId);
+        mobileEls.forEach((el) => el.remove());
+      };
+    }
+
     const GRAVITY = isMobile ? 420 : 480;
     const AIR = isMobile ? 0.993 : 0.991;
     const MAX = isMobile ? 48 : 95;

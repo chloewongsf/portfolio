@@ -168,6 +168,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             {project.sections.map((section) => (
               <div
                 key={section.label}
+                className="standard-case-section"
                 style={{ display: "grid", gridTemplateColumns: "180px 1fr", gap: "3rem", borderTop: BORDER, paddingTop: "2rem", paddingBottom: "2rem" }}
               >
                 <p
