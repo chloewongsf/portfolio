@@ -27,11 +27,11 @@ export default function ContactPage() {
             margin: "0 0 2rem",
           }}
         >
-          let's talk
+          let&apos;s talk
         </h1>
 
         <p style={{ fontSize: "1rem", lineHeight: 1.8, color: "#aaaaaa", maxWidth: "480px", margin: "0 0 4rem" }}>
-          I'm always interested in new opportunities, collaborations, and conversations about design, technology, and social impact.
+          for work, freelance, collaborations, or just to say hello, reach me here:
         </p>
 
         {/* Email */}
@@ -40,7 +40,7 @@ export default function ContactPage() {
             email
           </p>
           <a
-            href="mailto:hello@chloewong.com"
+            href="mailto:hello@chloewong.me"
             style={{
               fontFamily: "var(--font-serif)",
               fontSize: "clamp(1.5rem, 3vw, 2.5rem)",
@@ -52,7 +52,7 @@ export default function ContactPage() {
               paddingBottom: "0.25rem",
             }}
           >
-            hello@chloe-wong.com
+            hello@chloewong.me
           </a>
         </div>
 
