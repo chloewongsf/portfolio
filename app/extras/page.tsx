@@ -1,10 +1,101 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { PageNav } from "@/components/page-nav";
 import extras from "@/content/extras.json";
 
 const BORDER = "1px solid #2a2a2a";
+
+type WritingExtra = (typeof extras)[number];
+
+type RandomImageExtra = {
+  id: string;
+  type: "photo";
+  src: string;
+  aspectRatio: string;
+};
+
+type GalleryItem =
+  | { kind: "writing"; id: string; item: WritingExtra; variant: number }
+  | { kind: "image"; id: string; item: RandomImageExtra; variant: number };
+
+const RANDOM_IMAGES: RandomImageExtra[] = [
+  {
+    id: "extra-random-19d4860d",
+    type: "photo",
+    src: "/extra random/19d4860d58407418c90df26ae01bcb58.jpg",
+    aspectRatio: "1057 / 884",
+  },
+  {
+    id: "extra-random-2d49cf45",
+    type: "photo",
+    src: "/extra random/2d49cf452e05a2c9043b1899b07f35a3.jpg",
+    aspectRatio: "736 / 726",
+  },
+  {
+    id: "extra-random-210f9a6",
+    type: "photo",
+    src: "/extra random/210f9a67063a422efdeffceb5316e175.jpg",
+    aspectRatio: "1199 / 879",
+  },
+  {
+    id: "extra-random-c09a4b",
+    type: "photo",
+    src: "/extra random/c09a4bd8654bc194c924394b75e44082.jpg",
+    aspectRatio: "1080 / 1350",
+  },
+  {
+    id: "extra-random-1bf3fb",
+    type: "photo",
+    src: "/extra random/1bf3fb49f66896a629eab92455757920.jpg",
+    aspectRatio: "735 / 1165",
+  },
+  {
+    id: "extra-random-b002d9",
+    type: "photo",
+    src: "/extra random/b002d9ce0562dd3e7b167f5ff77624f1.jpg",
+    aspectRatio: "735 / 479",
+  },
+  {
+    id: "extra-random-357a50",
+    type: "photo",
+    src: "/extra random/357a50d332780a54473c0bf404e76467.jpg",
+    aspectRatio: "468 / 404",
+  },
+  {
+    id: "extra-random-dd00e4",
+    type: "photo",
+    src: "/extra random/dd00e45858365cba470cfe75a0b2c75b.jpg",
+    aspectRatio: "1170 / 1044",
+  },
+];
+
+function shuffleItems<T>(items: T[]) {
+  return items
+    .map((item) => ({ item, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ item }) => item);
+}
+
+function makeGalleryItems(): GalleryItem[] {
+  const baseItems: GalleryItem[] = [
+    ...extras.map((item) => ({
+      kind: "writing" as const,
+      id: item.id,
+      item,
+      variant: Math.floor(Math.random() * 3),
+    })),
+    ...RANDOM_IMAGES.map((item) => ({
+      kind: "image" as const,
+      id: item.id,
+      item,
+      variant: Math.floor(Math.random() * 3),
+    })),
+  ];
+
+  return shuffleItems(baseItems);
+}
 
 function excerptFrom(body: string) {
   const firstParagraph = body.split("\n\n")[0] ?? body;
@@ -23,13 +114,41 @@ const EMPHASIZED_PARAGRAPHS = new Set([
 
 export default function ExtrasPage() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [selectedImage, setSelectedImage] = useState<RandomImageExtra | null>(null);
+  const [galleryItems, setGalleryItems] = useState<GalleryItem[]>(() =>
+    [
+      ...extras.map((item) => ({
+        kind: "writing" as const,
+        id: item.id,
+        item,
+        variant: 0,
+      })),
+      ...RANDOM_IMAGES.map((item) => ({
+        kind: "image" as const,
+        id: item.id,
+        item,
+        variant: 0,
+      })),
+    ]
+  );
   const selectedItem = extras.find((item) => item.id === selectedId);
 
   useEffect(() => {
-    if (!selectedItem) return;
+    const shuffleTimer = window.setTimeout(() => {
+      setGalleryItems(makeGalleryItems());
+    }, 0);
+
+    return () => window.clearTimeout(shuffleTimer);
+  }, []);
+
+  useEffect(() => {
+    if (!selectedItem && !selectedImage) return;
 
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setSelectedId(null);
+      if (event.key === "Escape") {
+        setSelectedId(null);
+        setSelectedImage(null);
+      }
     };
 
     const previousOverflow = document.body.style.overflow;
@@ -40,7 +159,7 @@ export default function ExtrasPage() {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", onKeyDown);
     };
-  }, [selectedItem]);
+  }, [selectedItem, selectedImage]);
 
   return (
     <div
@@ -117,155 +236,200 @@ export default function ExtrasPage() {
             justifyContent: "start",
           }}
         >
-          {extras.map((item, index) => (
-            <button
-              id={item.id}
-              key={item.id}
-              type="button"
-              onClick={() => setSelectedId(item.id)}
-              style={{
-                position: "relative",
-                minHeight: "17.5rem",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between",
-                padding: "1.5rem",
-                overflow: "hidden",
-                border: BORDER,
-                backgroundColor: "rgba(17, 17, 17, 0.76)",
-                boxShadow: "0 18px 70px rgba(0,0,0,0.28)",
-                color: "inherit",
-                cursor: "pointer",
-                textAlign: "left",
-                font: "inherit",
-                transition: "transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease",
-              }}
-              onMouseEnter={(event) => {
-                event.currentTarget.style.transform = "translateY(-5px)";
-                event.currentTarget.style.borderColor = "#3a7878";
-                event.currentTarget.style.boxShadow = "0 24px 80px rgba(0,0,0,0.36)";
-              }}
-              onMouseLeave={(event) => {
-                event.currentTarget.style.transform = "translateY(0)";
-                event.currentTarget.style.borderColor = "#2a2a2a";
-                event.currentTarget.style.boxShadow = "0 18px 70px rgba(0,0,0,0.28)";
-              }}
-            >
-              <div
-                aria-hidden
-                style={{
-                  position: "absolute",
-                  right: "-0.2rem",
-                  top: "-1.2rem",
-                  fontFamily: "var(--font-serif)",
-                  fontSize: "clamp(8rem, 16vw, 13rem)",
-                  lineHeight: 0.8,
-                  color: "rgba(242,242,242,0.045)",
-                  letterSpacing: "-0.08em",
-                  pointerEvents: "none",
-                }}
-              >
-                {String(index + 1).padStart(2, "0")}
-              </div>
-
-              <div style={{ position: "relative", zIndex: 1 }}>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    gap: "1rem",
-                    marginBottom: "2.5rem",
-                  }}
-                >
-                  <span
-                    style={{
-                      color: "#3a7878",
-                      fontSize: "0.65rem",
-                      letterSpacing: "0.16em",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    {item.type ?? "extra"}
-                  </span>
-
-                  <span
-                    style={{
-                      color: "#555555",
-                      fontSize: "0.72rem",
-                      textAlign: "right",
-                    }}
-                  >
-                    {item.date}
-                  </span>
-                </div>
-
-                <h2
-                  style={{
-                    fontFamily: "var(--font-serif)",
-                    fontSize: "clamp(1.45rem, 2vw, 1.95rem)",
-                    fontWeight: 300,
-                    lineHeight: 1.04,
-                    letterSpacing: "-0.02em",
-                    maxWidth: "11ch",
-                    margin: "0 0 1rem",
-                  }}
-                >
-                  {item.title}
-                </h2>
-
-                <p
-                  style={{
-                    color: "#9a9a9a",
-                    lineHeight: 1.7,
-                    fontSize: "0.875rem",
-                    maxWidth: "34ch",
-                    margin: 0,
-                  }}
-                >
-                  {excerptFrom(item.body)}
-                </p>
-              </div>
-
-              <div
+          {galleryItems.map((galleryItem, index) =>
+            galleryItem.kind === "writing" ? (
+              <button
+                id={galleryItem.item.id}
+                key={galleryItem.id}
+                type="button"
+                onClick={() => setSelectedId(galleryItem.item.id)}
                 style={{
                   position: "relative",
-                  zIndex: 1,
+                  minHeight: galleryItem.variant === 1 ? "20rem" : "17.5rem",
                   display: "flex",
-                  gap: "0.5rem",
-                  flexWrap: "wrap",
-                  marginTop: "2rem",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  padding: "1.5rem",
+                  overflow: "hidden",
+                  border: BORDER,
+                  backgroundColor: "rgba(17, 17, 17, 0.76)",
+                  boxShadow: "0 18px 70px rgba(0,0,0,0.28)",
+                  color: "inherit",
+                  cursor: "pointer",
+                  textAlign: "left",
+                  font: "inherit",
+                  transition: "transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease",
+                }}
+                onMouseEnter={(event) => {
+                  event.currentTarget.style.transform = "translateY(-5px)";
+                  event.currentTarget.style.borderColor = "#3a7878";
+                  event.currentTarget.style.boxShadow = "0 24px 80px rgba(0,0,0,0.36)";
+                }}
+                onMouseLeave={(event) => {
+                  event.currentTarget.style.transform = "translateY(0)";
+                  event.currentTarget.style.borderColor = "#2a2a2a";
+                  event.currentTarget.style.boxShadow = "0 18px 70px rgba(0,0,0,0.28)";
                 }}
               >
-                <span
+                <div
+                  aria-hidden
                   style={{
-                    border: BORDER,
-                    borderRadius: "999px",
-                    padding: "0.35rem 0.7rem",
-                    color: "#aaaaaa",
-                    fontSize: "0.68rem",
-                    letterSpacing: "0.08em",
-                    textTransform: "lowercase",
+                    position: "absolute",
+                    right: "-0.2rem",
+                    top: "-1.2rem",
+                    fontFamily: "var(--font-serif)",
+                    fontSize: "clamp(8rem, 16vw, 13rem)",
+                    lineHeight: 0.8,
+                    color: "rgba(242,242,242,0.045)",
+                    letterSpacing: "-0.08em",
+                    pointerEvents: "none",
                   }}
                 >
-                  read
-                </span>
-                <span
+                  {String(index + 1).padStart(2, "0")}
+                </div>
+
+                <div style={{ position: "relative", zIndex: 1 }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      gap: "1rem",
+                      marginBottom: "2.5rem",
+                    }}
+                  >
+                    <span
+                      style={{
+                        color: "#3a7878",
+                        fontSize: "0.65rem",
+                        letterSpacing: "0.16em",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      {galleryItem.item.type ?? "extra"}
+                    </span>
+
+                    <span
+                      style={{
+                        color: "#555555",
+                        fontSize: "0.72rem",
+                        textAlign: "right",
+                      }}
+                    >
+                      {galleryItem.item.date}
+                    </span>
+                  </div>
+
+                  <h2
+                    style={{
+                      fontFamily: "var(--font-serif)",
+                      fontSize: "clamp(1.45rem, 2vw, 1.95rem)",
+                      fontWeight: 300,
+                      lineHeight: 1.04,
+                      letterSpacing: "-0.02em",
+                      maxWidth: "11ch",
+                      margin: "0 0 1rem",
+                    }}
+                  >
+                    {galleryItem.item.title}
+                  </h2>
+
+                  <p
+                    style={{
+                      color: "#9a9a9a",
+                      lineHeight: 1.7,
+                      fontSize: "0.875rem",
+                      maxWidth: "34ch",
+                      margin: 0,
+                    }}
+                  >
+                    {excerptFrom(galleryItem.item.body)}
+                  </p>
+                </div>
+
+                <div
                   style={{
-                    border: BORDER,
-                    borderRadius: "999px",
-                    padding: "0.35rem 0.7rem",
-                    color: "#666666",
-                    fontSize: "0.68rem",
-                    letterSpacing: "0.08em",
-                    textTransform: "lowercase",
+                    position: "relative",
+                    zIndex: 1,
+                    display: "flex",
+                    gap: "0.5rem",
+                    flexWrap: "wrap",
+                    marginTop: "2rem",
                   }}
                 >
-                  saved fragment
-                </span>
-              </div>
-            </button>
-          ))}
+                  <span
+                    style={{
+                      border: BORDER,
+                      borderRadius: "999px",
+                      padding: "0.35rem 0.7rem",
+                      color: "#aaaaaa",
+                      fontSize: "0.68rem",
+                      letterSpacing: "0.08em",
+                      textTransform: "lowercase",
+                    }}
+                  >
+                    read
+                  </span>
+                  <span
+                    style={{
+                      border: BORDER,
+                      borderRadius: "999px",
+                      padding: "0.35rem 0.7rem",
+                      color: "#666666",
+                      fontSize: "0.68rem",
+                      letterSpacing: "0.08em",
+                      textTransform: "lowercase",
+                    }}
+                  >
+                    saved fragment
+                  </span>
+                </div>
+              </button>
+            ) : (
+              <button
+                key={galleryItem.id}
+                type="button"
+                onClick={() => setSelectedImage(galleryItem.item)}
+                style={{
+                  display: "block",
+                  padding: 0,
+                  border: BORDER,
+                  background: "transparent",
+                  cursor: "pointer",
+                  overflow: "hidden",
+                  boxShadow: "0 18px 70px rgba(0,0,0,0.28)",
+                  transform: `rotate(${[-0.6, 0.8, -0.3][galleryItem.variant]}deg)`,
+                  transition: "transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease",
+                }}
+                onMouseEnter={(event) => {
+                  event.currentTarget.style.transform = "translateY(-5px) rotate(0deg)";
+                  event.currentTarget.style.borderColor = "#3a7878";
+                  event.currentTarget.style.boxShadow = "0 24px 80px rgba(0,0,0,0.36)";
+                }}
+                onMouseLeave={(event) => {
+                  event.currentTarget.style.transform = `rotate(${[-0.6, 0.8, -0.3][galleryItem.variant]}deg)`;
+                  event.currentTarget.style.borderColor = "#2a2a2a";
+                  event.currentTarget.style.boxShadow = "0 18px 70px rgba(0,0,0,0.28)";
+                }}
+              >
+                <div
+                  style={{
+                    position: "relative",
+                    aspectRatio: galleryItem.item.aspectRatio,
+                    backgroundColor: "#0d0d0d",
+                  }}
+                >
+                  <Image
+                    src={galleryItem.item.src}
+                    alt="extra random photo"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 21rem"
+                    style={{ objectFit: "cover" }}
+                  />
+                </div>
+              </button>
+            )
+          )}
         </div>
       </main>
 
@@ -378,6 +542,69 @@ export default function ExtrasPage() {
               ))}
             </div>
           </article>
+        </div>
+      )}
+
+      {selectedImage && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="extra random photo"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setSelectedImage(null);
+          }}
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 20000,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "1.25rem",
+            backgroundColor: "rgba(0,0,0,0.78)",
+            backdropFilter: "blur(10px)",
+          }}
+        >
+          <div
+            style={{
+              position: "relative",
+              width: "min(1000px, 100%)",
+              height: "min(82vh, 900px)",
+              border: BORDER,
+              backgroundColor: "#0d0d0d",
+              boxShadow: "0 34px 110px rgba(0,0,0,0.62)",
+            }}
+          >
+            <button
+              type="button"
+              onClick={() => setSelectedImage(null)}
+              aria-label="Close photo"
+              style={{
+                position: "absolute",
+                top: "1rem",
+                right: "1rem",
+                width: "2.25rem",
+                height: "2.25rem",
+                borderRadius: "50%",
+                border: BORDER,
+                backgroundColor: "#111111",
+                color: "#aaaaaa",
+                cursor: "pointer",
+                fontSize: "1rem",
+                zIndex: 2,
+              }}
+            >
+              x
+            </button>
+
+            <Image
+              src={selectedImage.src}
+              alt="extra random photo"
+              fill
+              sizes="100vw"
+              style={{ objectFit: "contain", padding: "1rem" }}
+            />
+          </div>
         </div>
       )}
     </div>

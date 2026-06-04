@@ -26,6 +26,33 @@ export default function VisualDesignPage() {
       <PageNav />
 
       <main style={{ maxWidth: "1200px", margin: "0 auto", padding: "6rem 1.5rem 6rem" }}>
+        <div style={{ marginBottom: "2.5rem" }}>
+          <p
+            style={{
+              fontSize: "0.5625rem",
+              letterSpacing: "0.25em",
+              textTransform: "lowercase",
+              color: "#3a7878",
+              margin: "0 0 1rem",
+            }}
+          >
+            visual work
+          </p>
+
+          <h1
+            style={{
+              fontFamily: "var(--font-serif)",
+              fontSize: "clamp(2.2rem, 4.5vw, 4rem)",
+              fontWeight: 300,
+              color: "#f2f2f2",
+              letterSpacing: "-0.02em",
+              lineHeight: 1.05,
+              margin: 0,
+            }}
+          >
+            visual experiments
+          </h1>
+        </div>
 
         <div
           style={{

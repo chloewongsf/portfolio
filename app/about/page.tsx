@@ -41,6 +41,7 @@ export default function AboutPage() {
           }
 
           .about-bio,
+          .about-personal,
           .about-details {
             grid-template-columns: 1fr !important;
           }
@@ -51,6 +52,16 @@ export default function AboutPage() {
 
           .about-photo-card {
             transform: none !important;
+          }
+
+          .about-soccer-photo {
+            margin-left: 0 !important;
+            margin-top: 1.5rem !important;
+          }
+
+          .about-less-serious-photo {
+            margin-left: 0 !important;
+            margin-top: 2rem !important;
           }
         }
       `}</style>
@@ -165,6 +176,89 @@ export default function AboutPage() {
             </div>
           ))}
         </div>
+
+        <section
+          className="about-personal"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "0.8fr 1.2fr",
+            gap: "3rem 5rem",
+            borderTop: BORDER,
+            paddingTop: "3rem",
+            marginBottom: "4rem",
+          }}
+        >
+          <div>
+            <p style={{ fontSize: "0.5625rem", letterSpacing: "0.25em", textTransform: "lowercase", color: "#3a7878", margin: "0 0 1rem" }}>
+              on a more personal note
+            </p>
+            <div
+              className="about-soccer-photo"
+              style={{
+                position: "relative",
+                width: "min(19rem, 100%)",
+                aspectRatio: "786 / 788",
+                marginTop: "4.75rem",
+                marginLeft: "clamp(0.75rem, 2.5vw, 2.5rem)",
+                border: "1px solid rgba(242,242,242,0.14)",
+                borderRadius: "10px",
+                overflow: "hidden",
+                backgroundColor: "#1a1a1a",
+                boxShadow: "0 18px 55px rgba(0,0,0,0.3)",
+              }}
+            >
+              <Image
+                src="/about pics/soccer ya.png"
+                alt="Chloe playing soccer"
+                fill
+                sizes="(max-width: 768px) 100vw, 15rem"
+                style={{ objectFit: "cover" }}
+              />
+            </div>
+            <div
+              className="about-less-serious-photo"
+              style={{
+                position: "relative",
+                width: "min(20rem, 100%)",
+                aspectRatio: "1873 / 1221",
+                marginTop: "7rem",
+                marginLeft: "clamp(2.25rem, 5vw, 5rem)",
+                border: "1px solid rgba(242,242,242,0.14)",
+                borderRadius: "10px",
+                overflow: "hidden",
+                backgroundColor: "#1a1a1a",
+                boxShadow: "0 18px 55px rgba(0,0,0,0.3)",
+              }}
+            >
+              <Image
+                src="/about pics/212_0413.jpeg"
+                alt="personal photo"
+                fill
+                sizes="(max-width: 768px) 100vw, 20rem"
+                style={{ objectFit: "cover" }}
+              />
+            </div>
+          </div>
+
+          <div style={{ display: "flex", flexDirection: "column", gap: "1.35rem" }}>
+            <p style={{ fontSize: "0.95rem", lineHeight: 1.85, color: "#f2f2f2", margin: 0 }}>
+              My name is Chloe, and I&apos;m a born and raised San Franciscan. For most of my life, I was building toward becoming a professional soccer player. I played five sports growing up, but soccer was the one I arranged everything around (until one too many injuries slowly dismantled that plan...).
+            </p>
+            <p style={{ fontSize: "0.95rem", lineHeight: 1.85, color: "#f2f2f2", margin: 0 }}>
+              Before it became a story about resilience or self-reinvention however, it was just loss. I had no idea who I was outside of being an athlete, and I spent years trying on different possible futures. I worked in policy for two years and realized I loved it more as a passion than as a career. I found data science genuinely exciting, but not when it became the only thing I did.
+            </p>
+            <p style={{ fontSize: "0.95rem", lineHeight: 1.85, color: "#f2f2f2", margin: 0 }}>
+              By summer 2025, I finally let myself stop forcing a single version of success and start paying attention to what I actually wanted to make. Looking back at my recent projects, I realized many of them circle around similar topics; one of the most prominent being: how to reclaim agency in a life increasingly shaped by speed, technology, rapid innovation, and efficiency. As a Data Science student, that might sound contradictory, but I don&apos;t think it is. I understand why technology matters. I also think life is only getting faster, which makes balance, ritual, attention, and presence feel more important, and not less.
+            </p>
+
+            <p style={{ fontSize: "0.5625rem", letterSpacing: "0.25em", textTransform: "lowercase", color: "#3a7878", margin: "1.5rem 0 0" }}>
+              on a less serious note
+            </p>
+            <p style={{ fontSize: "0.95rem", lineHeight: 1.85, color: "#f2f2f2", margin: 0 }}>
+              I love watching basketball, and I used to make a lot of fan edits on Instagram in middle school, which is probably my deepest, darkest secret. I love going to concerts (any and every genre, truly), watching Whit Stillman films, learning languages, and finding &ldquo;new&rdquo; classic English literature from the Georgian, Victorian, and Edwardian periods in the UK, and then updating my Goodreads afterward. After a semester abroad, I can also say with full sincerity and very little originality: I LOVE PARIS!
+            </p>
+          </div>
+        </section>
 
         {/* Divider */}
         <div style={{ borderTop: BORDER, marginBottom: "3rem" }} />
