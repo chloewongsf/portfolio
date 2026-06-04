@@ -81,12 +81,13 @@ function PageConfetti() {
 
     const W = window.innerWidth;
     const H = window.innerHeight;
+    const isMobile = W <= 768;
 
-    const GRAVITY = 480;
-    const AIR = 0.991;
-    const MAX = 95;
-    const SPAWN_MS = 52;
-    const MAX_VY = 560;
+    const GRAVITY = isMobile ? 420 : 480;
+    const AIR = isMobile ? 0.993 : 0.991;
+    const MAX = isMobile ? 48 : 95;
+    const SPAWN_MS = isMobile ? 165 : 52;
+    const MAX_VY = isMobile ? 500 : 560;
 
     const circles: PhysicsCircle[] = [];
     const els: HTMLDivElement[] = [];
@@ -94,24 +95,26 @@ function PageConfetti() {
     let maxVisualScrollReached = 0;
 
     function getVisualScroll() {
+      if (isMobile) return 0;
       const sy = window.scrollY;
       if (sy <= H * 2) return sy * 0.5;
       return sy - H;
     }
 
     function getCurrentFloorY(visualScroll: number) {
+      if (isMobile) return H;
       const logicalSection = Math.floor((visualScroll + H * 0.18) / H);
       return (logicalSection + 1) * H;
     }
 
     function spawnOne() {
-      const r = 9 + Math.random() * 24;
+      const r = isMobile ? 6 + Math.random() * 15 : 9 + Math.random() * 24;
 
       const c: PhysicsCircle = {
         x: W * 0.04 + Math.random() * W * 0.92,
-        y: -r - Math.random() * 180,
-        vx: (Math.random() - 0.5) * 85,
-        vy: 10 + Math.random() * 65,
+        y: -r - Math.random() * (isMobile ? 420 : 180),
+        vx: (Math.random() - 0.5) * (isMobile ? 52 : 85),
+        vy: 10 + Math.random() * (isMobile ? 45 : 65),
         r,
         restitution: 0.16 + Math.random() * 0.18,
         color: PALETTE[Math.floor(Math.random() * PALETTE.length)],
@@ -120,7 +123,7 @@ function PageConfetti() {
         wobble: Math.random() * 1000,
         gravityScale: 0.8 + Math.random() * 0.75,
         airScale: 0.988 + Math.random() * 0.01,
-        windStrength: 10 + Math.random() * 34,
+        windStrength: isMobile ? 6 + Math.random() * 22 : 10 + Math.random() * 34,
         fallDelayUntil: 0,
       };
 
@@ -715,6 +718,19 @@ function HomeContent() {
         @media (max-width: 900px) {
           .hero-copy {
             max-width: calc(100vw - 5rem);
+          }
+        }
+
+        @media (max-width: 768px) {
+          .hero-copy {
+            top: 54% !important;
+            left: 1rem !important;
+            max-width: calc(100vw - 2rem) !important;
+          }
+
+          .hero-copy p:first-child {
+            font-size: clamp(3rem, 19vw, 5rem) !important;
+            max-width: 8ch !important;
           }
         }
 

@@ -378,12 +378,14 @@ svg {
   }
 
   .hero-wrapper {
-    height: auto !important;
+    height: 100svh !important;
+    min-height: 100svh !important;
   }
 
   .hero-section {
     position: relative !important;
-    height: auto !important;
+    height: 100svh !important;
+    min-height: 100svh !important;
     border-bottom: none !important;
   }
 
