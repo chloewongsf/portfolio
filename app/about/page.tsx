@@ -119,7 +119,7 @@ export default function AboutPage() {
               priority
               style={{
                 objectFit: "cover",
-                transform: "scale(1.72) translateY(6%)",
+                transform: "scale(1.42) translateY(3%)",
               }}
             />
           </div>

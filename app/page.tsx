@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, type CSSProperties } from "react";
+import { useState, useEffect, useRef, type CSSProperties, type MouseEvent } from "react";
 import Link from "next/link";
 import { projects, type Project } from "@/content/projects";
 import { LenisProvider, useLenis } from "@/components/lenis-provider";
@@ -638,6 +638,7 @@ function CategoryTile({
   hoverBg,
   hoverTextColor,
   floatingStyle,
+  onClick,
 }: {
   href: string;
   label: string;
@@ -645,6 +646,7 @@ function CategoryTile({
   hoverBg?: string;
   hoverTextColor?: string;
   floatingStyle: CSSProperties;
+  onClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
 }) {
   const [hovered, setHovered] = useState(false);
 
@@ -655,6 +657,7 @@ function CategoryTile({
   return (
     <Link
       href={href}
+      onClick={onClick}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
@@ -733,6 +736,7 @@ export default function Home() {
 function HomeContent() {
   const lenis = useLenis();
   const heroSectionRef = useRef<HTMLElement>(null);
+  const [showExperimentsNotice, setShowExperimentsNotice] = useState(false);
 
   useEffect(() => {
     if (!lenis) return;
@@ -1150,6 +1154,10 @@ function HomeContent() {
               num="04"
               hoverBg={P.heavyMetal}
               hoverTextColor={P.kidnapper}
+              onClick={(event) => {
+                event.preventDefault();
+                setShowExperimentsNotice(true);
+              }}
               floatingStyle={{
                 position: "relative",
                 width: "auto",
@@ -1210,6 +1218,87 @@ function HomeContent() {
           </div>
         </section>
       </main>
+
+      {showExperimentsNotice && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Experiments work in progress"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) {
+              setShowExperimentsNotice(false);
+            }
+          }}
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 20000,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "1.25rem",
+            backgroundColor: "rgba(0,0,0,0.55)",
+            backdropFilter: "blur(10px)",
+            WebkitBackdropFilter: "blur(10px)",
+          }}
+        >
+          <div
+            style={{
+              width: "min(420px, 100%)",
+              border: BORDER,
+              backgroundColor: "#111111",
+              boxShadow: "0 30px 100px rgba(0,0,0,0.55)",
+              padding: "2rem",
+              textAlign: "center",
+            }}
+          >
+            <p
+              style={{
+                color: "#3a7878",
+                fontSize: "0.6rem",
+                letterSpacing: "0.22em",
+                textTransform: "lowercase",
+                margin: "0 0 1rem",
+              }}
+            >
+              experiments
+            </p>
+            <p
+              style={{
+                fontFamily: "var(--font-serif)",
+                color: "#f2f2f2",
+                fontSize: "clamp(1.7rem, 4vw, 2.5rem)",
+                fontWeight: 300,
+                lineHeight: 1.05,
+                letterSpacing: "-0.02em",
+                margin: "0 0 1.5rem",
+              }}
+            >
+              this is a work in progress!
+              <br />
+              come back again soon
+            </p>
+            <button
+              type="button"
+              onClick={() => setShowExperimentsNotice(false)}
+              style={{
+                border: BORDER,
+                borderRadius: "999px",
+                backgroundColor: "transparent",
+                color: "#aaaaaa",
+                cursor: "pointer",
+                font: "inherit",
+                fontSize: "0.75rem",
+                letterSpacing: "0.08em",
+                padding: "0.7rem 1rem",
+                textTransform: "lowercase",
+              }}
+            >
+              got it
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 }
