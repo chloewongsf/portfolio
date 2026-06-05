@@ -5,7 +5,18 @@ import Link from "next/link";
 import { projects, type Project } from "@/content/projects";
 import { LenisProvider, useLenis } from "@/components/lenis-provider";
 
-const featuredProjects = projects.slice(0, 5);
+const FEATURED_PROJECT_SLUGS = [
+  "outward",
+  "etro-how-to-arnica",
+  "genentech-gene-expression",
+  "taara",
+  "unplugged",
+  "her-and-i",
+];
+
+const featuredProjects = FEATURED_PROJECT_SLUGS.map((slug) =>
+  projects.find((project) => project.slug === slug)
+).filter((project): project is Project => Boolean(project));
 
 const BORDER = "1px solid #2a2a2a";
 
@@ -956,6 +967,21 @@ function HomeContent() {
             >
               work in motion
             </p>
+
+            <Link
+              href="/work"
+              style={{
+                fontSize: "0.5625rem",
+                letterSpacing: "0.18em",
+                textTransform: "lowercase",
+                color: "#aaaaaa",
+                textDecoration: "none",
+                borderBottom: "1px solid rgba(170,170,170,0.35)",
+                paddingBottom: "0.15rem",
+              }}
+            >
+              see all work →
+            </Link>
           </div>
 
           <div
@@ -1025,41 +1051,16 @@ function HomeContent() {
               }}
             />
 
-            <Link
-              href="/work"
+            <FloatingProjectCard
+              project={featuredProjects[5]}
+              index={5}
+              hoverBg={P.heavyMetal}
               style={{
                 position: "relative",
-                zIndex: 20,
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "flex-end",
-                padding: "1.5rem",
-                border: BORDER,
-                backgroundColor: "rgba(54, 63, 46, 0.82)",
-                backdropFilter: "blur(14px)",
-                WebkitBackdropFilter: "blur(14px)",
-                textDecoration: "none",
-                boxShadow: "0 18px 70px rgba(0,0,0,0.28)",
+                width: "auto",
+                minHeight: "auto",
               }}
-            >
-              <span
-                style={{
-                  fontFamily: "var(--font-serif)",
-                  fontSize: "clamp(1.3rem, 2vw, 2rem)",
-                  fontWeight: 300,
-                  color: P.kidnapper,
-                  letterSpacing: "-0.02em",
-                  lineHeight: 1.05,
-                  marginBottom: "0.5rem",
-                }}
-              >
-                see all
-                <br />
-                work
-              </span>
-
-              <span style={{ fontSize: "1.25rem", color: P.deYork }}>→</span>
-            </Link>
+            />
           </div>
         </section>
 
