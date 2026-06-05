@@ -40,28 +40,10 @@ const RANDOM_IMAGES: RandomImageExtra[] = [
     aspectRatio: "1199 / 879",
   },
   {
-    id: "extra-random-c09a4b",
-    type: "photo",
-    src: "/extra random/c09a4bd8654bc194c924394b75e44082.jpg",
-    aspectRatio: "1080 / 1350",
-  },
-  {
     id: "extra-random-1bf3fb",
     type: "photo",
     src: "/extra random/1bf3fb49f66896a629eab92455757920.jpg",
     aspectRatio: "735 / 1165",
-  },
-  {
-    id: "extra-random-b002d9",
-    type: "photo",
-    src: "/extra random/b002d9ce0562dd3e7b167f5ff77624f1.jpg",
-    aspectRatio: "735 / 479",
-  },
-  {
-    id: "extra-random-357a50",
-    type: "photo",
-    src: "/extra random/357a50d332780a54473c0bf404e76467.jpg",
-    aspectRatio: "468 / 404",
   },
   {
     id: "extra-random-dd00e4",
