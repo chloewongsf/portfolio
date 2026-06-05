@@ -230,10 +230,11 @@ export default function ExtrasPage() {
 
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(16rem, 21rem))",
-            gap: "1rem",
-            justifyContent: "start",
+            width: "100%",
+            maxWidth: "1180px",
+            margin: "0 auto",
+            columnWidth: "18rem",
+            columnGap: "1.25rem",
           }}
         >
           {galleryItems.map((galleryItem, index) =>
@@ -245,11 +246,13 @@ export default function ExtrasPage() {
                 onClick={() => setSelectedId(galleryItem.item.id)}
                 style={{
                   position: "relative",
+                  display: "inline-flex",
+                  width: "100%",
                   minHeight: galleryItem.variant === 1 ? "20rem" : "17.5rem",
-                  display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
                   padding: "1.5rem",
+                  margin: "0 0 1rem",
                   overflow: "hidden",
                   border: BORDER,
                   backgroundColor: "rgba(17, 17, 17, 0.76)",
@@ -258,6 +261,7 @@ export default function ExtrasPage() {
                   cursor: "pointer",
                   textAlign: "left",
                   font: "inherit",
+                  breakInside: "avoid",
                   transition: "transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease",
                 }}
                 onMouseEnter={(event) => {
@@ -391,23 +395,26 @@ export default function ExtrasPage() {
                 type="button"
                 onClick={() => setSelectedImage(galleryItem.item)}
                 style={{
-                  display: "block",
+                  display: "inline-block",
+                  width: "100%",
                   padding: 0,
+                  margin: "0 0 1rem",
                   border: BORDER,
                   background: "transparent",
                   cursor: "pointer",
                   overflow: "hidden",
                   boxShadow: "0 18px 70px rgba(0,0,0,0.28)",
-                  transform: `rotate(${[-0.6, 0.8, -0.3][galleryItem.variant]}deg)`,
+                  breakInside: "avoid",
+                  transform: "translateY(0)",
                   transition: "transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease",
                 }}
                 onMouseEnter={(event) => {
-                  event.currentTarget.style.transform = "translateY(-5px) rotate(0deg)";
+                  event.currentTarget.style.transform = "translateY(-5px)";
                   event.currentTarget.style.borderColor = "#3a7878";
                   event.currentTarget.style.boxShadow = "0 24px 80px rgba(0,0,0,0.36)";
                 }}
                 onMouseLeave={(event) => {
-                  event.currentTarget.style.transform = `rotate(${[-0.6, 0.8, -0.3][galleryItem.variant]}deg)`;
+                  event.currentTarget.style.transform = "translateY(0)";
                   event.currentTarget.style.borderColor = "#2a2a2a";
                   event.currentTarget.style.boxShadow = "0 18px 70px rgba(0,0,0,0.28)";
                 }}
@@ -415,8 +422,9 @@ export default function ExtrasPage() {
                 <div
                   style={{
                     position: "relative",
+                    width: "100%",
                     aspectRatio: galleryItem.item.aspectRatio,
-                    backgroundColor: "#0d0d0d",
+                    backgroundColor: "transparent",
                   }}
                 >
                   <Image
@@ -424,7 +432,7 @@ export default function ExtrasPage() {
                     alt="extra random photo"
                     fill
                     sizes="(max-width: 768px) 100vw, 21rem"
-                    style={{ objectFit: "cover" }}
+                    style={{ objectFit: "contain" }}
                   />
                 </div>
               </button>
