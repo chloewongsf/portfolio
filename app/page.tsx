@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, type CSSProperties, type MouseEvent } from
 import Link from "next/link";
 import { projects, type Project } from "@/content/projects";
 import { LenisProvider, useLenis } from "@/components/lenis-provider";
+import { PageNav } from "@/components/page-nav";
 
 const FEATURED_PROJECT_SLUGS = [
   "outward",
@@ -475,12 +476,42 @@ function OpeningScene() {
             fontSize: "clamp(0.95rem, 1.15vw, 1.2rem)",
             color: "#aaaaaa",
             lineHeight: 1.55,
-            margin: 0,
+            margin: "0 0 0.9rem",
             maxWidth: "44ch",
           }}
         >
           creative strategy & design with a technical foundation.
         </p>
+
+        <div
+          style={{
+            opacity: 0,
+            animation: "sceneFadeIn 0.6s ease 1.0s forwards",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "0.6875rem",
+              color: "#666666",
+              letterSpacing: "0.06em",
+              lineHeight: 1.7,
+              margin: 0,
+            }}
+          >
+            uc berkeley · data science
+          </p>
+          <p
+            style={{
+              fontSize: "0.6875rem",
+              color: "#666666",
+              letterSpacing: "0.06em",
+              lineHeight: 1.7,
+              margin: 0,
+            }}
+          >
+            parsons paris · spring 2026
+          </p>
+        </div>
       </div>
 
       <p
@@ -488,9 +519,9 @@ function OpeningScene() {
           position: "absolute",
           bottom: "3.5rem",
           right: "2.5rem",
-          fontSize: "0.4375rem",
+          fontSize: "0.5625rem",
           letterSpacing: "0.28em",
-          color: "#444444",
+          color: "#888888",
           textTransform: "uppercase",
           margin: 0,
           zIndex: 20,
@@ -549,9 +580,9 @@ function FloatingProjectCard({
         <span
           style={{
             display: "block",
-            fontSize: "0.5625rem",
+            fontSize: "0.625rem",
             letterSpacing: "0.2em",
-            color: hovered ? "#111111" : "#666666",
+            color: hovered ? "#111111" : "#888888",
             marginBottom: "1.25rem",
             textTransform: "lowercase",
             transition: "color 0.35s ease",
@@ -600,9 +631,9 @@ function FloatingProjectCard({
       >
         <span
           style={{
-            fontSize: "0.5625rem",
+            fontSize: "0.625rem",
             letterSpacing: "0.15em",
-            color: hovered ? "#1b1b1b" : "#666666",
+            color: hovered ? "#1b1b1b" : "#888888",
             textTransform: "lowercase",
             transition: "color 0.35s ease",
           }}
@@ -652,7 +683,7 @@ function CategoryTile({
 
   const bg = hovered ? hoverBg ?? "#1c1c1c" : "rgba(17, 17, 17, 0.76)";
   const tc = hovered ? hoverTextColor ?? "#f2f2f2" : "#f2f2f2";
-  const mc = hovered ? hoverTextColor ?? "#666666" : "#666666";
+  const mc = hovered ? hoverTextColor ?? "#888888" : "#888888";
 
   return (
     <Link
@@ -737,6 +768,17 @@ function HomeContent() {
   const lenis = useLenis();
   const heroSectionRef = useRef<HTMLElement>(null);
   const [showExperimentsNotice, setShowExperimentsNotice] = useState(false);
+  const modalCloseRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!showExperimentsNotice) return;
+    modalCloseRef.current?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setShowExperimentsNotice(false);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [showExperimentsNotice]);
 
   useEffect(() => {
     if (!lenis) return;
@@ -849,61 +891,10 @@ function HomeContent() {
       `}</style>
 
       <GrainOverlay />
-
-      <nav
-        className="home-nav"
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          width: "100vw",
-          zIndex: 10000,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "1.5rem 2.5rem",
-          backgroundColor: "#111111",
-          borderBottom: BORDER,
-          boxSizing: "border-box",
-        }}
-      >
-        <span
-          style={{
-            fontFamily: "var(--font-sans)",
-            fontSize: "0.875rem",
-            fontWeight: 500,
-            letterSpacing: "0.02em",
-            color: "#f2f2f2",
-          }}
-        >
-          Chloe Wong
-        </span>
-
-        <div className="home-nav-links" style={{ display: "flex", gap: "2rem" }}>
-          {[
-            { href: "/work", label: "work" },
-            { href: "/about", label: "about" },
-            { href: "/contact", label: "contact" },
-          ].map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              style={{
-                fontFamily: "var(--font-sans)",
-                fontSize: "0.875rem",
-                color: "#aaaaaa",
-                textDecoration: "none",
-                letterSpacing: "0.02em",
-              }}
-            >
-              {label}
-            </Link>
-          ))}
-        </div>
-      </nav>
+      <PageNav />
 
       <main
+        id="main-content"
         style={{
           position: "relative",
           zIndex: 10,
@@ -950,10 +941,10 @@ function HomeContent() {
           >
             <p
               style={{
-                fontSize: "0.5625rem",
+                fontSize: "0.6875rem",
                 letterSpacing: "0.25em",
                 textTransform: "lowercase",
-                color: "#666666",
+                color: "#888888",
                 margin: 0,
               }}
             >
@@ -962,10 +953,10 @@ function HomeContent() {
 
             <p
               style={{
-                fontSize: "0.5625rem",
+                fontSize: "0.6875rem",
                 letterSpacing: "0.18em",
                 textTransform: "lowercase",
-                color: "#444444",
+                color: "#888888",
                 margin: 0,
               }}
             >
@@ -1087,10 +1078,10 @@ function HomeContent() {
           >
             <p
               style={{
-                fontSize: "0.5625rem",
+                fontSize: "0.6875rem",
                 letterSpacing: "0.25em",
                 textTransform: "lowercase",
-                color: "#666666",
+                color: "#888888",
                 margin: 0,
               }}
             >
@@ -1202,7 +1193,7 @@ function HomeContent() {
             </p>
 
             <a
-              href="mailto:chloewong@berkeley.edu"
+              href="mailto:hello@chloewong.me"
               style={{
                 fontSize: "clamp(2rem, 4.5vw, 4.5rem)",
                 fontWeight: 300,
@@ -1223,7 +1214,7 @@ function HomeContent() {
         <div
           role="dialog"
           aria-modal="true"
-          aria-label="Experiments work in progress"
+          aria-labelledby="experiments-modal-title"
           onMouseDown={(event) => {
             if (event.target === event.currentTarget) {
               setShowExperimentsNotice(false);
@@ -1246,7 +1237,7 @@ function HomeContent() {
             style={{
               width: "min(420px, 100%)",
               border: BORDER,
-              backgroundColor: "#111111",
+              backgroundColor: "#000000",
               boxShadow: "0 30px 100px rgba(0,0,0,0.55)",
               padding: "2rem",
               textAlign: "center",
@@ -1264,6 +1255,7 @@ function HomeContent() {
               experiments
             </p>
             <p
+              id="experiments-modal-title"
               style={{
                 fontFamily: "var(--font-serif)",
                 color: "#f2f2f2",
@@ -1279,6 +1271,7 @@ function HomeContent() {
               come back again soon
             </p>
             <button
+              ref={modalCloseRef}
               type="button"
               onClick={() => setShowExperimentsNotice(false)}
               style={{
@@ -1290,8 +1283,9 @@ function HomeContent() {
                 font: "inherit",
                 fontSize: "0.75rem",
                 letterSpacing: "0.08em",
-                padding: "0.7rem 1rem",
+                padding: "0.7rem 1.5rem",
                 textTransform: "lowercase",
+                transition: "transform 0.16s cubic-bezier(0.23, 1, 0.32, 1), color 0.2s ease",
               }}
             >
               got it

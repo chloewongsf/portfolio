@@ -24,7 +24,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
   if (project.scenes && project.scenes.length > 0) {
     return (
-      <div style={{ backgroundColor: "#111111" }}>
+      <div style={{ backgroundColor: "#000000" }}>
         <PageNav />
         <CaseStudyScroll scenes={project.scenes} bgColors={project.bgColors} />
       </div>
@@ -32,14 +32,14 @@ export default function ProjectPage({ params }: ProjectPageProps) {
   }
 
   return (
-    <div style={{ backgroundColor: "#111111", minHeight: "100vh", color: "#f2f2f2", fontFamily: "var(--font-sans)" }}>
+    <div style={{ backgroundColor: "#000000", minHeight: "100vh", color: "#f2f2f2", fontFamily: "var(--font-sans)" }}>
       <PageNav />
 
-      <main style={{ maxWidth: "1100px", margin: "0 auto", padding: "8rem 1.5rem 6rem" }}>
+      <main id="main-content" style={{ maxWidth: "1100px", margin: "0 auto", padding: "8rem 1.5rem 6rem" }}>
         {/* Back */}
         <Link
           href="/work"
-          style={{ fontSize: "0.8125rem", color: "#666666", textDecoration: "none", letterSpacing: "0.05em", display: "inline-block", marginBottom: "3rem" }}
+          style={{ fontSize: "0.8125rem", color: "#999999", textDecoration: "none", letterSpacing: "0.05em", display: "inline-block", marginBottom: "3rem", padding: "0.4rem 0" }}
         >
           ← work
         </Link>

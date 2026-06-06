@@ -146,7 +146,7 @@ export default function ExtrasPage() {
   return (
     <div
       style={{
-        backgroundColor: "#111111",
+        backgroundColor: "#000000",
         minHeight: "100vh",
         color: "#f2f2f2",
         fontFamily: "var(--font-sans)",
@@ -450,7 +450,7 @@ export default function ExtrasPage() {
               maxHeight: "min(82vh, 900px)",
               overflow: "auto",
               border: BORDER,
-              backgroundColor: "#111111",
+              backgroundColor: "#000000",
               boxShadow: "0 34px 110px rgba(0,0,0,0.62)",
               padding: "clamp(1.25rem, 3vw, 3rem)",
             }}
@@ -467,7 +467,7 @@ export default function ExtrasPage() {
                 height: "2.25rem",
                 borderRadius: "50%",
                 border: BORDER,
-                backgroundColor: "#111111",
+                backgroundColor: "#000000",
                 color: "#aaaaaa",
                 cursor: "pointer",
                 fontSize: "1rem",
@@ -577,7 +577,7 @@ export default function ExtrasPage() {
                 height: "2.25rem",
                 borderRadius: "50%",
                 border: BORDER,
-                backgroundColor: "#111111",
+                backgroundColor: "#000000",
                 color: "#aaaaaa",
                 cursor: "pointer",
                 fontSize: "1rem",

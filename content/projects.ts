@@ -401,7 +401,7 @@ export const projects: Project[] = [
   {
     slug: "ucsf-sis-portal",
     projectType: "professional",
-    title: "UCSF: Student Information Systems Portal",
+    title: "UCSF Reports Portal",
     year: "2024",
     tags: ["UX Design", "Data Research", "Enterprise"],
     roles: ["Data Science & UI/UX Design Intern"],
@@ -575,7 +575,7 @@ export const projects: Project[] = [
     blurb: "A tactile service design intervention that replaces the phone at the dinner table with prompt cards designed to reclaim presence.",
     platform: "Physical / Service Design",
     overview:
-      "This project began as my Parsons Paris Research and Development Methods final project, and eventually turned into a personal and passionate investigation into the \"default companion.\" Growing up in the Bay Area and studying Data Science at Berkeley, I've seen how deeply we are heading toward an AI-mediated society. I realized that my habit of incorporating electronics into family dinners started as early as the 3rd grade; despite my mother's advice, I haven't truly peeled away from that behavior since. Instead of a \"phone ban,\" which feels like punishment, we designed a system of prompt cards that capitalize on the natural lulls of a meal.",
+      "This project started as a personal investigation into the \"default companion.\" Growing up in the Bay Area and studying Data Science at Berkeley, I've seen how deeply we are heading toward an AI-mediated society. I realized that my habit of incorporating electronics into family dinners started as early as the 3rd grade; despite my mother's advice, I haven't truly peeled away from that behavior since. Instead of a \"phone ban,\" which feels like punishment, we designed a system of prompt cards that capitalize on the natural lulls of a meal.",
     highlights: [],
     links: [],
     sections: [
@@ -585,7 +585,7 @@ export const projects: Project[] = [
         keyPoints: [
           {
             label: "Behavioral Trigger Mapping",
-            text: "Based on \"Fly on the Wall\" research at local cafés, we identified the specific \"gap moments\" — like waiting for an order or the check — where users instinctively reach for their phones. We designed the system to intervene during these specific windows of overstimulation or boredom.",
+            text: "Based on \"Fly on the Wall\" research at local cafés, we identified the specific \"gap moments\" like waiting for an order or the check, where users instinctively reach for their phones. We designed the system to intervene during these specific windows of overstimulation or boredom.",
           },
           {
             label: "Solo vs. Group Interaction Logic",
@@ -593,14 +593,14 @@ export const projects: Project[] = [
           },
           {
             label: "Inter-Table Logic",
-            text: "To move beyond the individual table, I designed an asynchronous exchange system. Guests can contribute permanent prompts to the deck or leave \"seat-specific\" letters for future diners. By facilitating these stranger-to-stranger interactions — including an option for the restaurant to mail back responses — the project transforms the physical space into an evolving community archive.",
+            text: "To move beyond the individual table, I designed an asynchronous exchange system. Guests can contribute permanent prompts to the deck or leave \"seat-specific\" letters for future diners. By facilitating these stranger-to-stranger interactions, including an option for the restaurant to mail back responses, the project transforms the physical space into an evolving community archive.",
           },
         ],
       },
       {
         label: "The Process",
         paragraphs: [
-          "While the prompt cards were the initial touchpoint, the project was conceptualized to include a wider range of analog interventions.",
+          "While the prompt cards were the initial touchpoint, the project was conceptualized to include a wider range of analog interventions:",
         ],
         keyPoints: [
           {
@@ -619,9 +619,7 @@ export const projects: Project[] = [
       },
       {
         label: "What I Learned",
-        paragraphs: [
-          "P.S. The name of our project, #unplugged, is an intentional irony; using a hashtag, a symbol of digital categorization, to title a project about reclaiming physical agency.",
-        ],
+        paragraphs: [],
         items: [
           "The best tools solve a problem you experience yourself. Designing for someone who struggles with their own screen time allows for an empathetic solution rather than a judgmental one.",
           "I learned that UX doesn't always have to happen on a screen or within the tech industry. Designing for the human hand and the dining table requires the same logical structure as a digital platform, but with the goal of encouraging users to critically engage with their lives rather than an interface.",
@@ -629,12 +627,9 @@ export const projects: Project[] = [
         ],
       },
       {
-        label: "Brand Identity",
+        label: "P.S.",
         paragraphs: [
-          "The visual language of #unplugged was designed to feel warm and analog — deliberately avoiding the clean, digital aesthetic of the tech products it pushes back against.",
-        ],
-        images: [
-          { src: "/rd methods/brand kit.png" },
+          "The name of our project, #unplugged, is an intentional irony — using a hashtag, a symbol of digital categorization, to title a project about reclaiming physical agency.",
         ],
       },
     ],

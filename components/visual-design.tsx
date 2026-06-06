@@ -22,10 +22,18 @@ export default function VisualDesignPage() {
   }, [active]);
 
   return (
-    <div style={{ backgroundColor: "#111111", minHeight: "100vh", color: "#f2f2f2", fontFamily: "var(--font-sans)" }}>
+    <div style={{ backgroundColor: "#000000", minHeight: "100vh", color: "#f2f2f2", fontFamily: "var(--font-sans)" }}>
       <PageNav />
 
-      <main style={{ maxWidth: "1200px", margin: "0 auto", padding: "6rem 1.5rem 6rem" }}>
+      <main
+        className="visual-work-main"
+        style={{
+          width: "100%",
+          maxWidth: "1600px",
+          margin: "0 auto",
+          padding: "7rem 2rem 6rem",
+        }}
+      >
         <div style={{ marginBottom: "2.5rem" }}>
           <p
             style={{
@@ -55,9 +63,11 @@ export default function VisualDesignPage() {
         </div>
 
         <div
+          className="visual-work-gallery"
           style={{
-            columnWidth: "13rem",
-            columnGap: "1rem",
+            width: "100%",
+            columnCount: 4,
+            columnGap: "1.25rem",
           }}
         >
           {visuals.map((v) => (

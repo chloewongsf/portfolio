@@ -25,7 +25,7 @@ const BEAT1_CONTENT: { type: "label" | "line"; text: string }[] = [
 
 function TaaraEditorialCaseStudy() {
   return (
-    <main style={{ backgroundColor: "#111111", color: "#f2f2f2" }}>
+    <main style={{ backgroundColor: "#000000", color: "#f2f2f2" }}>
       <section
         className="scrolly-case-hero"
         style={{
@@ -838,7 +838,7 @@ export default function TaaraPage() {
   return (
     <div
       style={{
-        backgroundColor: "#111111",
+        backgroundColor: "#000000",
         color: "#f2f2f2",
         fontFamily: "var(--font-sans)",
       }}
@@ -1186,7 +1186,7 @@ export default function TaaraPage() {
           paddingTop: "4rem",
           paddingBottom: "6rem",
           textAlign: "center",
-          background: "radial-gradient(circle at top, #1a160f 0%, #111111 38%, #090909 100%)",
+          background: "radial-gradient(circle at top, #1a160f 0%, #000000 38%, #090909 100%)",
         }}
       >
         <p

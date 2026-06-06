@@ -8,24 +8,24 @@ const BORDER = "1px solid #2a2a2a";
 const ABOUT_PHOTOS = [
   {
     src: "/about pics/61284E24-8E38-4EE2-B216-5D518E1263F6.JPG",
-    alt: "personal photo",
+    alt: "Photograph of Chloe Wong",
     aspectRatio: "4032 / 3024",
   },
   {
     src: "/about pics/IMG_4428.jpeg",
-    alt: "personal photo",
+    alt: "Photograph of Chloe Wong",
     aspectRatio: "4032 / 3024",
   },
   {
     src: "/about pics/img4422.JPG",
-    alt: "personal photo",
+    alt: "Photograph of Chloe Wong",
     aspectRatio: "2650 / 1945",
   },
 ];
 
 export default function AboutPage() {
   return (
-    <div style={{ backgroundColor: "#111111", minHeight: "100vh", color: "#f2f2f2", fontFamily: "var(--font-sans)" }}>
+    <div style={{ backgroundColor: "#000000", minHeight: "100vh", color: "#f2f2f2", fontFamily: "var(--font-sans)" }}>
       <PageNav />
 
       <style>{`
@@ -66,9 +66,9 @@ export default function AboutPage() {
         }
       `}</style>
 
-      <main style={{ maxWidth: "1000px", margin: "0 auto", padding: "8rem 1.5rem 6rem" }}>
+      <main id="main-content" style={{ maxWidth: "1000px", margin: "0 auto", padding: "8rem 1.5rem 6rem" }}>
         {/* Label */}
-        <p style={{ fontSize: "0.5625rem", letterSpacing: "0.25em", textTransform: "lowercase", color: "#3a7878", marginBottom: "2rem" }}>
+        <p style={{ fontSize: "0.6875rem", letterSpacing: "0.25em", textTransform: "lowercase", color: "#3a7878", marginBottom: "2rem" }}>
           about
         </p>
 
@@ -189,7 +189,7 @@ export default function AboutPage() {
           }}
         >
           <div>
-            <p style={{ fontSize: "0.5625rem", letterSpacing: "0.25em", textTransform: "lowercase", color: "#3a7878", margin: "0 0 1rem" }}>
+            <p style={{ fontSize: "0.6875rem", letterSpacing: "0.25em", textTransform: "lowercase", color: "#3a7878", margin: "0 0 1rem" }}>
               on a more personal note
             </p>
             <div
@@ -232,7 +232,7 @@ export default function AboutPage() {
             >
               <Image
                 src="/about pics/212_0413.jpeg"
-                alt="personal photo"
+                alt="Chloe Wong candid photo"
                 fill
                 sizes="(max-width: 768px) 100vw, 20rem"
                 style={{ objectFit: "cover" }}
@@ -251,7 +251,7 @@ export default function AboutPage() {
               By summer 2025, I finally let myself stop forcing a single version of success and start paying attention to what I actually wanted to make. Looking back at my recent projects, I realized many of them circle around similar topics; one of the most prominent being: how to reclaim agency in a life increasingly shaped by speed, technology, rapid innovation, and efficiency. As a Data Science student, that might sound contradictory, but I don&apos;t think it is. I understand why technology matters. I also think life is only getting faster, which makes balance, ritual, attention, and presence feel more important, and not less.
             </p>
 
-            <p style={{ fontSize: "0.5625rem", letterSpacing: "0.25em", textTransform: "lowercase", color: "#3a7878", margin: "1.5rem 0 0" }}>
+            <p style={{ fontSize: "0.6875rem", letterSpacing: "0.25em", textTransform: "lowercase", color: "#3a7878", margin: "1.5rem 0 0" }}>
               on a less serious note
             </p>
             <p style={{ fontSize: "0.95rem", lineHeight: 1.85, color: "#f2f2f2", margin: 0 }}>
@@ -266,7 +266,7 @@ export default function AboutPage() {
         {/* Skills + Tools */}
         <div className="about-details" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem" }}>
           <div>
-            <p style={{ fontSize: "0.5625rem", letterSpacing: "0.25em", textTransform: "lowercase", color: "#3a7878", marginBottom: "1.25rem" }}>
+            <p style={{ fontSize: "0.6875rem", letterSpacing: "0.25em", textTransform: "lowercase", color: "#3a7878", marginBottom: "1.25rem" }}>
               disciplines
             </p>
             <p style={{ fontSize: "0.875rem", color: "#aaaaaa", lineHeight: 2, margin: 0 }}>
@@ -277,14 +277,14 @@ export default function AboutPage() {
             </p>
           </div>
           <div>
-            <p style={{ fontSize: "0.5625rem", letterSpacing: "0.25em", textTransform: "lowercase", color: "#3a7878", marginBottom: "1.25rem" }}>
+            <p style={{ fontSize: "0.6875rem", letterSpacing: "0.25em", textTransform: "lowercase", color: "#3a7878", marginBottom: "1.25rem" }}>
               tools
             </p>
             <p style={{ fontSize: "0.875rem", color: "#aaaaaa", lineHeight: 2, margin: 0 }}>
               Figma · Adobe CC · TypeScript · Python · Git
             </p>
 
-            <p style={{ fontSize: "0.5625rem", letterSpacing: "0.25em", textTransform: "lowercase", color: "#3a7878", margin: "2rem 0 1.25rem" }}>
+            <p style={{ fontSize: "0.6875rem", letterSpacing: "0.25em", textTransform: "lowercase", color: "#3a7878", margin: "2rem 0 1.25rem" }}>
               currently
             </p>
             <p style={{ fontSize: "0.875rem", color: "#aaaaaa", lineHeight: 1.8, margin: 0 }}>

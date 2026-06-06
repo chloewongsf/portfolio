@@ -8,7 +8,7 @@ const BORDER = "1px solid #2a2a2a";
 
 export default function PlaygroundPage() {
   return (
-    <div style={{ backgroundColor: "#111111", minHeight: "100vh", color: "#f2f2f2", fontFamily: "var(--font-sans)" }}>
+    <div style={{ backgroundColor: "#000000", minHeight: "100vh", color: "#f2f2f2", fontFamily: "var(--font-sans)" }}>
       <PageNav />
 
       <main style={{ maxWidth: "1100px", margin: "0 auto", padding: "8rem 1.5rem 6rem" }}>

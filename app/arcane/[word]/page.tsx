@@ -67,7 +67,7 @@ export default function WordPage({ params }: WordPageProps) {
   const nextWord = allWords[(currentIdx + 1) % allWords.length];
 
   return (
-    <div style={{ backgroundColor: "#111111", minHeight: "100vh", color: "#f2f2f2", fontFamily: "var(--font-sans)" }}>
+    <div style={{ backgroundColor: "#000000", minHeight: "100vh", color: "#f2f2f2", fontFamily: "var(--font-sans)" }}>
       <PageNav />
 
       <main style={{ maxWidth: "800px", margin: "0 auto", padding: "8rem 1.5rem 6rem" }}>

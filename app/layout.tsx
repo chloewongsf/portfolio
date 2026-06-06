@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono, Inter, Allura, DM_Mono, Roboto_Flex } from "next/font/google";
+import { JetBrains_Mono, Allura, DM_Mono, Roboto_Flex } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/lib/theme-context";
 import { AppShell } from "@/components/app-shell";
+import { cn } from "@/lib/utils";
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -20,8 +21,8 @@ const boldonse = localFont({
   display: "swap",
 });
 
-const inter = Inter({
-  subsets: ["latin"],
+const geist = localFont({
+  src: "../node_modules/geist/dist/fonts/geist-sans/Geist-Variable.woff2",
   variable: "--font-sans",
   display: "swap",
 });
@@ -86,10 +87,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${jetbrainsMono.variable} ${boldonse.variable} ${inter.variable} ${allura.variable} ${dmMono.variable} ${robotoFlex.variable} ${meddon.variable} ${peddana.variable} ${questrial.variable}`}
+      className={cn(jetbrainsMono.variable, boldonse.variable, allura.variable, dmMono.variable, robotoFlex.variable, meddon.variable, peddana.variable, questrial.variable, "font-sans", geist.variable)}
       data-theme="terminal"
     >
-      <body>
+      <body className={geist.className}>
         <ThemeProvider>
           <AppShell>{children}</AppShell>
         </ThemeProvider>

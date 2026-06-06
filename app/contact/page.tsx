@@ -6,12 +6,12 @@ const BORDER = "1px solid #2a2a2a";
 
 export default function ContactPage() {
   return (
-    <div style={{ backgroundColor: "#111111", minHeight: "100vh", color: "#f2f2f2", fontFamily: "var(--font-sans)" }}>
+    <div style={{ backgroundColor: "#000000", minHeight: "100vh", color: "#f2f2f2", fontFamily: "var(--font-sans)" }}>
       <PageNav />
 
-      <main style={{ maxWidth: "1000px", margin: "0 auto", padding: "8rem 1.5rem 6rem" }}>
+      <main id="main-content" style={{ maxWidth: "1000px", margin: "0 auto", padding: "8rem 1.5rem 6rem" }}>
         {/* Label */}
-        <p style={{ fontSize: "0.5625rem", letterSpacing: "0.25em", textTransform: "lowercase", color: "#3a7878", marginBottom: "2rem" }}>
+        <p style={{ fontSize: "0.6875rem", letterSpacing: "0.25em", textTransform: "lowercase", color: "#3a7878", marginBottom: "2rem" }}>
           contact
         </p>
 
@@ -36,7 +36,7 @@ export default function ContactPage() {
 
         {/* Email */}
         <div style={{ marginBottom: "4rem" }}>
-          <p style={{ fontSize: "0.5625rem", letterSpacing: "0.25em", textTransform: "lowercase", color: "#3a7878", marginBottom: "1rem" }}>
+          <p style={{ fontSize: "0.6875rem", letterSpacing: "0.25em", textTransform: "lowercase", color: "#3a7878", marginBottom: "1rem" }}>
             email
           </p>
           <a
@@ -61,14 +61,14 @@ export default function ContactPage() {
 
         {/* Links */}
         <div>
-          <p style={{ fontSize: "0.5625rem", letterSpacing: "0.25em", textTransform: "lowercase", color: "#3a7878", marginBottom: "1.5rem" }}>
+          <p style={{ fontSize: "0.6875rem", letterSpacing: "0.25em", textTransform: "lowercase", color: "#3a7878", marginBottom: "1.5rem" }}>
             elsewhere
           </p>
           <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
             {[
-              { label: "LinkedIn", href: "https://linkedin.com/in/chloewong" },
-              { label: "GitHub", href: "https://github.com/chloewong" },
-              { label: "Twitter", href: "https://twitter.com/chloewong" },
+              { label: "LinkedIn", href: "https://linkedin.com/in/chloewongsf" },
+              { label: "GitHub", href: "https://github.com/chloewongsf" },
+              { label: "Instagram", href: "https://instagram.com/chloework" },
             ].map(({ label, href }) => (
               <a
                 key={label}

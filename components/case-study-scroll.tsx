@@ -512,7 +512,7 @@ export function CaseStudyScroll({ scenes, bgColors }: CaseStudyScrollProps) {
           top: 0,
           height: "100vh",
           overflow: "hidden",
-          backgroundColor: "#111111",
+          backgroundColor: "#000000",
         }}
       >
         {/* Cards — each panel is a floating card with visible margins */}

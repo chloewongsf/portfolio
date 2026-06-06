@@ -4,7 +4,7 @@ const CV_PATH = "/chloe_wong_2026 copy.pdf";
 
 export default function CVPage() {
   return (
-    <div style={{ backgroundColor: "#111111", minHeight: "100vh", color: "#f2f2f2", fontFamily: "var(--font-sans)" }}>
+    <div style={{ backgroundColor: "#000000", minHeight: "100vh", color: "#f2f2f2", fontFamily: "var(--font-sans)" }}>
       <PageNav />
 
       <main style={{ maxWidth: "1000px", margin: "0 auto", padding: "8rem 2.5rem 6rem" }}>
