@@ -151,7 +151,7 @@ export const projects: Project[] = [
     tags: ["Marketing Campaign", "Interactive Experience", "AI Storytelling"],
     roles: ["Designer & Developer"],
     tools: ["React", "Next.js", "CSS", "Vercel"],
-    blurb: "A speculative marketing campaign for Her.",
+    blurb: "a speculative and interactive marketing campaign for Her (2013) by Spike Jonze.",
     platform: "Web Campaign / Interactive Experience",
     overview:
       "her & i is an interactive marketing campaign inspired by Spike Jonze's Her that reimagines the film's emotional premise as a public, participatory web experience. Rather than promoting the movie through traditional trailers or posters alone, the campaign invites users into a correspondence with OS1, where private thoughts can become anonymous and personalized letters in a shared archive.",
