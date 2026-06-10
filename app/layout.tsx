@@ -77,6 +77,11 @@ const questrial = localFont({
 export const metadata: Metadata = {
   title: "Chloe Wong - Portfolio",
   description: "Designer, researcher, and creative technologist",
+  icons: {
+    icon: [{ url: "/logo.png", type: "image/png" }],
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({

@@ -443,7 +443,7 @@ export default function WorkPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            style={{ display: "flex", gap: "0.5rem" }}
+            style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", justifyContent: "flex-end" }}
           >
             {FILTERS.map(({ key, label }) => (
               <button
@@ -464,6 +464,26 @@ export default function WorkPage() {
                 {label}
               </button>
             ))}
+
+            <Link
+              href="/visual-design"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                minHeight: "2.25rem",
+                padding: "0.55rem 1rem",
+                border: "1px solid #3a7878",
+                borderRadius: "999px",
+                color: "#3a7878",
+                fontSize: "0.6875rem",
+                letterSpacing: "0.08em",
+                textDecoration: "none",
+                whiteSpace: "nowrap",
+                transition: "background-color 0.2s ease, color 0.2s ease",
+              }}
+            >
+              visual work ↗
+            </Link>
           </motion.div>
         </div>
 
