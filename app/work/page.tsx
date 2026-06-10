@@ -11,14 +11,14 @@ const BORDER = "1px solid #2a2a2a";
 
 const WORK_PROJECT_ORDER = [
   "outward",
-  "chroma-akinator",
+  "taara",
   "her-and-i",
   "etro-how-to-arnica",
-  "taara",
-  "it-starts-earlier",
-  "personal-flight-telemetry",
-  "ucsf-sis-portal",
   "genentech-gene-expression",
+  "chroma-akinator",
+  "it-starts-earlier",
+  "ucsf-sis-portal",
+  "personal-flight-telemetry",
   "nlp-narrative-analysis",
   "unplugged",
 ];
