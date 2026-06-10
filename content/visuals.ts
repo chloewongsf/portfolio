@@ -13,6 +13,48 @@ export interface VisualItem {
 
 export const visuals: VisualItem[] = [
   {
+    slug: "etro-how-to-arnica-preview",
+    title: "ETRO: How to Arnica",
+    year: "2026",
+    cover: "/etro preview.mp4",
+    aspectRatio: "16 / 9",
+    images: [
+      {
+        src: "/etro preview.mp4",
+        caption: "A satirical manual for reckless luxury.",
+      },
+    ],
+    tags: ["Brand Concept", "Editorial Design"],
+  },
+  {
+    slug: "taara-brand-identity",
+    title: "Taara Brand Identity",
+    year: "2026",
+    cover: "/taara assets/taara-brand-identity.png",
+    aspectRatio: "16 / 9",
+    images: [
+      {
+        src: "/taara assets/taara-brand-identity.png",
+        caption: "Brand identity for the Taara chai ritual system.",
+      },
+    ],
+    tags: ["Brand Identity", "Product Design"],
+  },
+  {
+    slug: "unplugged-preview",
+    title: "Unplugged",
+    year: "2026",
+    cover: "/unplugged preview.png",
+    aspectRatio: "3534 / 2907",
+    images: [
+      {
+        src: "/unplugged preview.png",
+        caption: "Unplugged project preview.",
+      },
+    ],
+    tags: ["Visual Design"],
+  },
+  {
     slug: "untitled-5",
     title: "Untitled (5)",
     year: "2026",

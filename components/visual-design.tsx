@@ -133,7 +133,14 @@ export default function VisualDesignPage() {
               <div style={{ position: "relative", background: "#111", border: BORDER }}>
                 <div style={{ height: "min(70vh, 720px)", background: "#000", display: "flex", alignItems: "center", justifyContent: "center" }}>
                   {active.images[activeImageIdx].src.endsWith('.mp4') ? (
-                    <video src={active.images[activeImageIdx].src} controls style={{ maxHeight: "70vh", width: "100%", height: "100%", objectFit: "contain" }} />
+                    <video
+                      src={active.images[activeImageIdx].src}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      style={{ maxHeight: "70vh", width: "100%", height: "100%", objectFit: "contain" }}
+                    />
                   ) : (
                     <img src={active.images[activeImageIdx].src} alt={active.images[activeImageIdx].caption || active.title} style={{ maxHeight: "70vh", width: "100%", height: "100%", objectFit: "contain" }} />
                   )}
