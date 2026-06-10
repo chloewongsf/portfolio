@@ -9,6 +9,29 @@ import { PageNav } from "@/components/page-nav";
 
 const BORDER = "1px solid #2a2a2a";
 
+const WORK_PROJECT_ORDER = [
+  "outward",
+  "chroma-akinator",
+  "her-and-i",
+  "etro-how-to-arnica",
+  "taara",
+  "it-starts-earlier",
+  "personal-flight-telemetry",
+  "ucsf-sis-portal",
+  "genentech-gene-expression",
+  "nlp-narrative-analysis",
+  "unplugged",
+];
+
+const orderedProjects = [...projects].sort((a, b) => {
+  const aIndex = WORK_PROJECT_ORDER.indexOf(a.slug);
+  const bIndex = WORK_PROJECT_ORDER.indexOf(b.slug);
+  const aOrder = aIndex === -1 ? WORK_PROJECT_ORDER.length : aIndex;
+  const bOrder = bIndex === -1 ? WORK_PROJECT_ORDER.length : bIndex;
+
+  return aOrder - bOrder;
+});
+
 const PROJECT_PREVIEWS: Record<string, { src: string; type: "image" | "video" }> = {
   outward: { src: "/outward preview.mp4", type: "video" },
   "chroma-akinator": { src: "/chroma akinator preview.mp4", type: "video" },
@@ -341,17 +364,17 @@ export default function WorkPage() {
     "visual-design": ["Print Design", "Typography", "Branding", "Visual Design", "Service Design", "Speculative Design", "UX Design", "Enterprise"],
   };
 
-  let filtered: typeof projects = projects;
+  let filtered: typeof projects = orderedProjects;
 
   if (categoryParam) {
     const tags = CATEGORY_TAG_MAP[categoryParam];
     if (tags) {
-      filtered = projects.filter((p) => p.tags.some((t) => tags.includes(t)));
+      filtered = orderedProjects.filter((p) => p.tags.some((t) => tags.includes(t)));
     }
   } else if (filterParam === "featured") {
-    filtered = projects.filter((p) => p.featured);
+    filtered = orderedProjects.filter((p) => p.featured);
   } else {
-    filtered = active === "all" ? projects : projects.filter((p) => p.projectType === active);
+    filtered = active === "all" ? orderedProjects : orderedProjects.filter((p) => p.projectType === active);
   }
 
   const activeLabel = categoryParam

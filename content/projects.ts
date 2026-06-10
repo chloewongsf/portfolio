@@ -215,7 +215,7 @@ export const projects: Project[] = [
       "Editorial Design",
     ],
     tools: ["Canon 800D", "Adobe InDesign", "Photoshop", "Illustrator"],
-    blurb: "A satirical manual for reckless luxury.",
+    blurb: "Brand concept product: a satirical manual for reckless luxury.",
     platform: "Printed Publication / Brand Concept",
     overview:
       "Developed for my Creative Direction & Styling class at Parsons Paris, this how-to guide is a conceptual brand project for Etro that proposes a return to the brand's heritage of textile intelligence. In a leather goods market defined by preciousness and fragility, this project repositions Arnica, Etro's resin-coated jacquard fabric, as a material built for real life. The central idea is simple: the bag is not something you protect. It is the thing that protects you.",
@@ -401,22 +401,22 @@ export const projects: Project[] = [
   {
     slug: "ucsf-sis-portal",
     projectType: "professional",
-    title: "UCSF Reports Portal",
+    title: "UCSF",
     year: "2024",
     tags: ["UX Design", "Data Research", "Enterprise"],
     roles: ["Data Science & UI/UX Design Intern"],
-    tools: ["Figma", "SQL", "Python"],
-    blurb: "Redesigning a legacy institutional reporting portal to reduce analyst friction and improve information architecture.",
-    platform: "Internal Enterprise Tool (UCSF)",
+    tools: ["Figma", "SQL", "IBM DB2", "Tableau", "React", "Bootstrap"],
+    blurb: "Redesigning a legacy institutional reporting portal to improve usability, navigation, and trust in internal data tools.",
+    platform: "Internal Enterprise Tool",
     overview:
-      "During my time as an intern at UCSF, I worked on the redesign of the internal SIS Reports Portal, a centralized dashboard system used by staff and administrators to access critical institutional data. The project focused on transforming a high-friction legacy interface into a streamlined, user-centric environment. By focusing on front-end usability and information architecture, I helped reduce the cognitive load required for analysts to navigate complex datasets and retrieve operational insights.",
+      "During my time as an intern at UCSF, I worked on the SIS Reports Portal, a legacy internal system used by faculty, administrators, and staff to access institutional reports across student services and academic operations. The portal held important data, but the experience of finding and interpreting that data was often slowed down by unclear navigation, inconsistent naming, dense report structures, and filtering patterns that were not always intuitive to daily users. My role sat between data, interface design, and stakeholder needs. I worked directly with the CIO to audit the portal’s usability, identify where the system created friction, and translate those findings into front-end improvements. Because the tool was internal and legacy, the goal was to make the existing system clearer, more consistent, and easier to trust for the people who depended on it.",
     highlights: [],
     links: [],
     sections: [
       {
         label: "Note",
         paragraphs: [
-          "Due to the proprietary nature of UCSF's internal data systems, visual assets for this project are restricted. This case study focuses on the Enterprise UX strategy and the architectural improvements made to the institutional reporting workflow.",
+          "Due to the proprietary nature of UCSF’s internal data systems, visual assets for this project are restricted. This case study focuses on the UX audit, information architecture, and workflow improvements made to the institutional reporting experience.",
         ],
       },
       {
@@ -424,30 +424,29 @@ export const projects: Project[] = [
         paragraphs: [],
         keyPoints: [
           {
-            label: "User-Centered Audit",
-            text: "Collaborated with internal stakeholders to identify workflow friction points, specifically targeting navigation bottlenecks and inconsistent filtering logic within the reporting interface.",
+            label: "Workflow & Usability Audit",
+            text: "I reviewed the portal from the perspective of daily users, identifying where navigation, report naming, filtering logic, and page structure made it harder to locate the right information quickly. The audit focused on practical friction: where users might hesitate, misread a label, lose context, or struggle to understand which report matched their task.",
           },
           {
-            label: "Information Architecture Redesign",
-            text: "Assisted in the structural reorganization of the portal's report hierarchy, moving from a deeply nested menu system to a flatter, task-oriented navigation model to improve report findability.",
+            label: "Information Architecture Cleanup",
+            text: "I helped evaluate how reports were grouped, labeled, and accessed across the portal, with the goal of making the system feel less like a technical archive and more like a usable decision tool. This included clarifying naming conventions, reducing unnecessary ambiguity, and thinking through how report categories could better match stakeholder workflows.",
           },
           {
-            label: "Interface Standardization",
-            text: "Developed and implemented consistent layout templates and styling patterns to ensure a predictable user experience across diverse reporting modules.",
+            label: "Interface & Pattern Standardization",
+            text: "I implemented front-end improvements using React, Bootstrap, HTML, CSS, and JavaScript, applying more consistent layout patterns across the portal. The work focused on making repeated actions feel predictable, improving readability, and reducing the amount of effort required to scan, compare, and access reports.",
           },
           {
-            label: "Visual Hierarchy Optimization",
-            text: "Refined the portal's front-end presentation by clarifying labeling, improving section spacing, and emphasizing primary actions to accelerate data scanning and decision-making speeds.",
+            label: "Data Reliability & Trust",
+            text: "In addition to interface work, I supported reporting infrastructure through SQL, IBM DB2, and Tableau. This helped surface and resolve inconsistencies in the underlying data, reinforcing an important part of enterprise UX: users cannot trust an interface if the information behind it feels unreliable.",
           },
         ],
       },
       {
         label: "Takeaways",
-        paragraphs: [],
-        items: [
-          "Learned how to balance aesthetic minimalism with the high-density data requirements of enterprise users, ensuring that visual clarity never compromises functional depth.",
-          "Developed the ability to translate technical feedback from data analysts and administrative staff into actionable design requirements, bridging the gap between user needs and technical constraints.",
-          "Gained a deep understanding of how individual UI changes impact a larger institutional ecosystem, prioritizing scalability and consistency across a multi-modular platform.",
+        paragraphs: [
+          "This project taught me that usability in enterprise systems is often less about dramatic redesign and more about removing small points of friction that accumulate over time. A confusing label, inconsistent filter, or buried report can slow down an entire workflow when the tool is used repeatedly by busy stakeholders.",
+          "It also helped me understand how design and data quality are connected. A reporting portal is only useful if users can find the right information, understand what they are looking at, and trust that the output is accurate. In that sense, the work was about making institutional data more usable.",
+          "Most importantly, I learned how to work within real constraints: legacy systems, proprietary data, stakeholder needs, and technical limitations. The project pushed me to think about design as a practical layer between complex infrastructure and the people who rely on it every day.",
         ],
       },
     ],
@@ -458,12 +457,12 @@ export const projects: Project[] = [
     title: "Genentech: Gene Expression Dashboard",
     year: "2025",
     tags: ["Data Viz", "Research", "Bioinformatics"],
-    roles: ["Sole Developer & Designer"],
+    roles: ["Sole Designer & Developer"],
     tools: ["Python", "Pandas", "Plotly", "Dash"],
-    blurb: "An interactive dashboard for analyzing differential gene expression across colorectal cancer cell lines.",
+    blurb: "An interactive research tool for comparing differential gene expression across colorectal cancer cell lines.",
     platform: "Research Tool",
     overview:
-      "Working directly with a researcher at Genentech, I developed an interactive dashboard to streamline the analysis of colorectal cancer cell lines. The project was driven by the need to automate the manual comparison of fragmented genomic datasets. I translated specific research requirements into a functional tool, focusing on reducing analysis time and increasing the accuracy of cross-model gene identification.",
+      "Working directly with a researcher at Genentech, I designed and built an interactive dashboard to make a fragmented gene expression study easier to interpret. The researcher needed to understand whether a compound was producing consistent effects across three colorectal cancer cell lines, but the original workflow required manually comparing separate spreadsheets, plots, and statistical outputs. My role was to translate that research question into a usable interface: one that could help a scientist move between overview, comparison, outlier discovery, gene-level detail, and exportable evidence. Rather than treating the project as a purely technical visualization task, I focused on building a decision workflow around pattern recognition, confidence-building, and communication.",
     highlights: [],
     links: [],
     sections: [
@@ -472,28 +471,32 @@ export const projects: Project[] = [
         paragraphs: [],
         keyPoints: [
           {
-            label: "Multi-Dimensional Data Parsing",
-            text: "Engineered a pipeline to ingest and clean multi-sheet genomic data, translating raw gene IDs, log2FoldChange, and p-values into structured dataframes for comparative analysis.",
+            label: "Research Workflow Translation",
+            text: "I began by mapping the researcher’s existing analysis process, identifying where manual comparison created friction, uncertainty, or repeated work. From there, I translated the core scientific question — whether genes behaved consistently across models — into a dashboard structure that supported both exploration and evidence-building.",
           },
           {
-            label: "Direction-Aware Overlap Logic",
-            text: "Implemented a computational system to detect gene intersections across all three cell lines, specifically filtering for \"directional consistency\" (genes regulated in the same direction, up or down, across models).",
+            label: "Direction-Aware Gene Overlap",
+            text: "I developed logic to identify overlapping genes across all three cell lines while preserving directionality, separating genes that were consistently upregulated or downregulated from those that only appeared statistically significant in isolation. This made the tool more useful for biological interpretation, not just data filtering.",
           },
           {
-            label: "Dual-Metric Visualization",
-            text: "Designed interactive Volcano Plots and Heatmaps that visualize both statistical significance (-log10 padj) and effect size (log2FoldChange) simultaneously, providing a dual-lens view of biological impact.",
+            label: "Multi-Layered Visual System",
+            text: "I designed the dashboard around multiple levels of analysis: combined overlap views, per-cell-line volcano plots, heatmaps for log2 fold change and adjusted p-values, and ranked gene tables. Each view was meant to answer a different kind of question, from “what is happening overall?” to “which specific genes are driving this pattern?”",
           },
           {
-            label: "Dynamic Research UX",
-            text: "Integrated adjustable threshold filters and real-time top-N ranking, allowing scientists to experiment with statistical cutoffs and export presentation-ready results instantly.",
+            label: "Interactive Research UX",
+            text: "I added threshold controls, top-N ranking, dynamic filtering, and hover interactions so the researcher could test different statistical cutoffs without rebuilding plots manually. The goal was to make the dashboard flexible enough for real scientific exploration, while still keeping the interface readable and structured.",
+          },
+          {
+            label: "Reporting & Handoff",
+            text: "I built export workflows for CSVs, images, and structured Excel outputs so that findings could move directly from exploratory analysis into presentations, review, and downstream research decisions without manual rework.",
           },
         ],
       },
       {
         label: "Next Steps",
         paragraphs: [
-          "Generalize the ingestion engine to support any RNA-seq dataset beyond the initial colorectal cancer study.",
-          "Optimize the complex data-grid and heatmap layouts for tablet use, facilitating mobile data review in a laboratory environment.",
+          "The next step would be to generalize the ingestion process so the dashboard could support RNA-seq datasets beyond the original colorectal cancer study, making it reusable across other experiments with similar comparison needs.",
+          "I would also refine the interface for more flexible review contexts, including cleaner data-grid behavior, responsive heatmap layouts, and tablet-friendly interaction patterns for lab or meeting environments.",
         ],
       },
     ],
@@ -638,7 +641,7 @@ export const projects: Project[] = [
     slug: "taara",
     projectType: "personal",
     title: "Taara: Chai Ritual System",
-    year: "2025",
+    year: "2026",
     tags: ["Product Design", "Material Innovation", "Service Design"],
     roles: ["Designer"],
     tools: ["Product Design", "Material Innovation", "Service Design"],
