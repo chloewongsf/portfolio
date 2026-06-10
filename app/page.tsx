@@ -1127,11 +1127,15 @@ function HomeContent() {
             />
 
             <CategoryTile
-              href="/extras"
-              label="Extras"
+              href="/playground"
+              label="Experiments"
               num="03"
-              hoverBg={P.nyPink}
-              hoverTextColor={P.mondo}
+              hoverBg={P.heavyMetal}
+              hoverTextColor={P.kidnapper}
+              onClick={(event) => {
+                event.preventDefault();
+                setShowExperimentsNotice(true);
+              }}
               floatingStyle={{
                 position: "relative",
                 width: "auto",
@@ -1140,15 +1144,11 @@ function HomeContent() {
             />
 
             <CategoryTile
-              href="/playground"
-              label="Experiments"
+              href="/extras"
+              label="Personal: Writing & Photos"
               num="04"
-              hoverBg={P.heavyMetal}
-              hoverTextColor={P.kidnapper}
-              onClick={(event) => {
-                event.preventDefault();
-                setShowExperimentsNotice(true);
-              }}
+              hoverBg={P.nyPink}
+              hoverTextColor={P.mondo}
               floatingStyle={{
                 position: "relative",
                 width: "auto",
