@@ -127,6 +127,11 @@
 html {
   scroll-behavior: auto; /* Lenis handles smooth scroll; native smooth conflicts with it */
   font-size: 18px;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -138,6 +143,11 @@ body {
   line-height: 1.6;
   transition: background-color 0.2s ease, color 0.2s ease;
   text-transform: lowercase;
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+  overscroll-behavior-x: none;
 }
 
 /* ============================================================================
@@ -443,6 +453,10 @@ svg {
 }
 
 @media (max-width: 768px) {
+  :root {
+    --viewport-height: 100svh;
+  }
+
   main,
   section {
     padding-left: 1rem !important;
@@ -454,15 +468,19 @@ svg {
     padding-bottom: 2rem !important;
   }
 
+  main.home-main {
+    padding: 0 !important;
+  }
+
   body {
     font-size: 0.95rem;
   }
 
   .page-nav {
     position: fixed !important;
-    top: 0.5rem !important;
-    left: 0.5rem !important;
-    right: 0.5rem !important;
+    top: max(0.5rem, env(safe-area-inset-top)) !important;
+    left: max(0.5rem, env(safe-area-inset-left)) !important;
+    right: max(0.5rem, env(safe-area-inset-right)) !important;
     padding: 0.45rem 0.75rem !important;
   }
 
@@ -484,15 +502,41 @@ svg {
   }
 
   .hero-wrapper {
-    height: 100svh !important;
-    min-height: 100svh !important;
+    height: var(--viewport-height) !important;
+    min-height: var(--viewport-height) !important;
   }
 
   .hero-section {
     position: relative !important;
-    height: 100svh !important;
-    min-height: 100svh !important;
+    height: var(--viewport-height) !important;
+    min-height: var(--viewport-height) !important;
     border-bottom: none !important;
+    overflow: clip !important;
+    padding: 0 !important;
+  }
+
+  .opening-scene {
+    padding-top: calc(4.5rem + env(safe-area-inset-top));
+    padding-bottom: calc(1.25rem + env(safe-area-inset-bottom));
+  }
+
+  .hero-copy {
+    top: 50% !important;
+    left: max(1rem, env(safe-area-inset-left)) !important;
+    right: max(1rem, env(safe-area-inset-right)) !important;
+    width: auto !important;
+    max-width: none !important;
+  }
+
+  .hero-copy p:first-child {
+    max-width: 9ch !important;
+    font-size: clamp(2.8rem, 16vw, 4.6rem) !important;
+    line-height: 0.94 !important;
+  }
+
+  .hero-scroll-cue {
+    right: max(1rem, env(safe-area-inset-right)) !important;
+    bottom: calc(1rem + env(safe-area-inset-bottom)) !important;
   }
 
   .home-section {
@@ -513,6 +557,35 @@ svg {
     min-height: auto !important;
   }
 }
+
+@media (max-width: 768px) and (max-height: 620px) {
+  .hero-copy {
+    top: 52% !important;
+  }
+
+  .hero-copy p:first-child {
+    font-size: clamp(2.5rem, 13vw, 3.6rem) !important;
+    margin-bottom: 0.65rem !important;
+  }
+
+  .hero-copy > p:nth-child(2) {
+    font-size: 0.9rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 0.65rem !important;
+  }
+
+  .hero-scroll-cue {
+    display: none;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  a,
+  button {
+    -webkit-tap-highlight-color: rgba(58, 120, 120, 0.2);
+  }
+}
+
 
 @media (max-width: 520px) {
   .work-project-grid {

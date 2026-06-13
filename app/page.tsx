@@ -91,8 +91,8 @@ function PageConfetti() {
     if (!containerRef.current) return;
     const containerEl = containerRef.current as HTMLDivElement;
 
-    const W = window.innerWidth;
-    const H = window.innerHeight;
+    let W = window.innerWidth;
+    let H = window.visualViewport?.height ?? window.innerHeight;
     const isMobile = W <= 768;
 
     if (isMobile) {
@@ -143,6 +143,14 @@ function PageConfetti() {
       let lastTime = -1;
       let rafId: number;
 
+      const updateMobileBounds = () => {
+        W = window.innerWidth;
+        H = window.visualViewport?.height ?? window.innerHeight;
+      };
+
+      window.addEventListener("resize", updateMobileBounds, { passive: true });
+      window.visualViewport?.addEventListener("resize", updateMobileBounds);
+
       function loop(now: number) {
         if (lastTime < 0) lastTime = now;
         const dt = Math.min((now - lastTime) / 1000, 0.05);
@@ -188,6 +196,8 @@ function PageConfetti() {
 
       return () => {
         cancelAnimationFrame(rafId);
+        window.removeEventListener("resize", updateMobileBounds);
+        window.visualViewport?.removeEventListener("resize", updateMobileBounds);
         mobileEls.forEach((el) => el.remove());
       };
     }
@@ -442,7 +452,7 @@ function PageConfetti() {
 
 function OpeningScene() {
   return (
-    <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
+    <div className="opening-scene" style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
       <div
         className="hero-copy"
         style={{
@@ -515,6 +525,7 @@ function OpeningScene() {
       </div>
 
       <p
+        className="hero-scroll-cue"
         style={{
           position: "absolute",
           bottom: "3.5rem",
@@ -876,15 +887,8 @@ function HomeContent() {
         }
 
         @media (max-width: 768px) {
-          .hero-copy {
-            top: 54% !important;
-            left: 1rem !important;
-            max-width: calc(100vw - 2rem) !important;
-          }
-
           .hero-copy p:first-child {
-            font-size: clamp(3rem, 19vw, 5rem) !important;
-            max-width: 8ch !important;
+            letter-spacing: 0 !important;
           }
         }
 
@@ -895,6 +899,7 @@ function HomeContent() {
 
       <main
         id="main-content"
+        className="home-main"
         style={{
           position: "relative",
           zIndex: 10,
@@ -909,7 +914,7 @@ function HomeContent() {
             style={{
               position: "sticky",
               top: 0,
-              height: "100vh",
+              height: "var(--viewport-height, 100vh)",
               backgroundColor: "transparent",
               borderBottom: BORDER,
               overflow: "hidden",
