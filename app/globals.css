@@ -91,7 +91,7 @@
    ============================================================================ */
 
 :root {
-  --font-sans: "geist", "geist Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-satoshi), ui-sans-serif, system-ui, sans-serif;
 }
 
 /* ============================================================================

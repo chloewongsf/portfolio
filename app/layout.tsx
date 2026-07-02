@@ -21,9 +21,20 @@ const boldonse = localFont({
   display: "swap",
 });
 
-const geist = localFont({
-  src: "../node_modules/geist/dist/fonts/geist-sans/Geist-Variable.woff2",
-  variable: "--font-sans",
+const satoshi = localFont({
+  src: [
+    {
+      path: "../public/fonts/Satoshi_Complete/Fonts/WEB/fonts/Satoshi-Variable.woff2",
+      weight: "300 900",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/Satoshi_Complete/Fonts/WEB/fonts/Satoshi-VariableItalic.woff2",
+      weight: "300 900",
+      style: "italic",
+    },
+  ],
+  variable: "--font-satoshi",
   display: "swap",
 });
 
@@ -87,10 +98,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn(jetbrainsMono.variable, boldonse.variable, allura.variable, dmMono.variable, robotoFlex.variable, meddon.variable, peddana.variable, questrial.variable, "font-sans", geist.variable)}
+      className={cn(jetbrainsMono.variable, boldonse.variable, allura.variable, dmMono.variable, robotoFlex.variable, meddon.variable, peddana.variable, questrial.variable, satoshi.variable, "font-sans")}
       data-theme="terminal"
     >
-      <body className={geist.className}>
+      <body className={satoshi.className}>
         <ThemeProvider>
           <AppShell>{children}</AppShell>
         </ThemeProvider>

@@ -68,7 +68,7 @@ export default function ContactPage() {
             {[
               { label: "LinkedIn", href: "https://linkedin.com/in/chloewongsf" },
               { label: "GitHub", href: "https://github.com/chloewongsf" },
-              { label: "Instagram", href: "https://instagram.com/chloework" },
+              { label: "Instagram", href: "https://instagram.com/chlowork" },
             ].map(({ label, href }) => (
               <a
                 key={label}

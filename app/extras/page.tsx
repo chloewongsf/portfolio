@@ -505,6 +505,32 @@ export default function ExtrasPage() {
               {selectedItem.title}
             </h2>
 
+            {"substackUrl" in selectedItem && selectedItem.substackUrl && (
+              <a
+                href={selectedItem.substackUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.45rem",
+                  border: BORDER,
+                  borderRadius: "999px",
+                  padding: "0.55rem 0.85rem",
+                  margin: "-0.75rem 0 2rem",
+                  color: "#f2f2f2",
+                  backgroundColor: "rgba(58, 120, 120, 0.18)",
+                  textDecoration: "none",
+                  fontSize: "0.72rem",
+                  letterSpacing: "0.12em",
+                  textTransform: "uppercase",
+                }}
+              >
+                read on Substack
+                <span aria-hidden>↗</span>
+              </a>
+            )}
+
             <div
               style={{
                 color: "#d6d6d6",
